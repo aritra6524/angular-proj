@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterService } from '../register.service';
 
 @Component({
@@ -13,12 +14,12 @@ export class LoginComponent {
   status: boolean;
   profileType: string = '';
 
-  constructor(private loginObj: RegisterService){}
+  constructor(private loginObj: RegisterService, private router: Router){}
 
   ngOnInit(): void{
     this.loginPatForm = new FormGroup({
       patemail: new FormControl(null),
-      patpassword: new FormControl(null)
+      pattpassword: new FormControl(null)
     });
     this.loginDocForm = new FormGroup({
       docemail: new FormControl(null),
@@ -33,8 +34,9 @@ export class LoginComponent {
   onPatLogin(): void {
     this.loginObj.getuserCredPat(this.loginPatForm.value).subscribe({
       next:(value)=>{
-        if(value[0].patpassword==this.loginPatForm.value.patpassword){
-          
+        if(value[0].patpassword===this.loginPatForm.value.pattpassword){
+          console.log("Logged in successfully");
+          this.router.navigate (['/patient-dashboard']);
         }
       },
       error:(err)=>{

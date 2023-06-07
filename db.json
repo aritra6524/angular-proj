@@ -1,8 +1,14 @@
 {
-  "doctor": [
-  ],
+  "doctor": [],
   "patient": [
+    {
+      "patfirstname": "Aritra",
+      "patlastname": "Basu",
+      "patphone": 9876546789,
+      "patemail": "aritra.basu123@gmail.com",
+      "patpassword": "aritrabasu",
+      "id": 1
+    }
   ],
-  "appointment": [
-  ]
+  "appointment": []
 }
