@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
       docemail: new FormControl(null),
       docpassword: new FormControl(null),
       clinicname: new FormControl(null),
+      cliniccity: new FormControl(null),
       clinicaddress: new FormControl(null),
       doctime: new FormControl(null),
       mon: new FormControl(false),
