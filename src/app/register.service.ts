@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,20 +9,20 @@ export class RegisterService{
 
   constructor(private hC: HttpClient) { }
 
-  registerDoctor(docDetails){
+  registerDoctor(docDetails:any){
     return this.hC.post('http://localhost:3000/doctor', docDetails);
   }
 
-  registerPatient(patDetails){
+  registerPatient(patDetails:any){
     return this.hC.post('http://localhost:3000/patient', patDetails);
   }
 
-  getuserCredPat(emailid){
-    return this.hC.get<Patient[]>('http://localhost:3000/patient?patemail=${emailid}')
+  getuserCredPat(emailid): Observable<Patient[]> {
+    return this.hC.get<Patient[]>(`http://localhost:3000/patient?patemail=${emailid}`);
   }
 
-  getuserCredDoc(emailid){
-    return this.hC.get<Doctor[]>('http://localhost:3000/patient?docemail=${emailid}')
+  getuserCredDoc(emailid): Observable<Doctor> {
+    return this.hC.get<Doctor>(`http://localhost:3000/doctor?docemail=${emailid}`);
   }
 }
 

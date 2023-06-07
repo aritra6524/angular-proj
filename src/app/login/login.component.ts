@@ -19,7 +19,7 @@ export class LoginComponent {
   ngOnInit(): void{
     this.loginPatForm = new FormGroup({
       patemail: new FormControl(null),
-      pattpassword: new FormControl(null)
+      patpassword: new FormControl(null)
     });
     this.loginDocForm = new FormGroup({
       docemail: new FormControl(null),
@@ -32,27 +32,37 @@ export class LoginComponent {
   }
 
   onPatLogin(): void {
+    console.log(this.loginPatForm.value.patpassword);
     this.loginObj.getuserCredPat(this.loginPatForm.value).subscribe({
-      next:(value)=>{
-        if(value[0].patpassword===this.loginPatForm.value.pattpassword){
+      next: (value) => {
+        console.log("Value:", value);
+        console.log("Type of value[0].patpassword:", typeof value[0].patpassword);
+        console.log("Type of this.loginPatForm.value.patpassword:", typeof this.loginPatForm.value.patpassword);
+  
+        if (value && value.length > 0 && value[0].patpassword === this.loginPatForm.value.patpassword) {
           console.log("Logged in successfully");
-          this.router.navigate (['/patient-dashboard']);
+          this.router.navigate(['/patient-dashboard']);
+        } else {
+          console.log("Invalid credentials");
         }
       },
-      error:(err)=>{
-        
-      },
-    })
+      error: (err) => {
+        console.log("Error occurred:", err);
+      }
+    });
   }
+  
+  
 
   onDocLogin(): void {
-    this.loginObj.getuserCredPat(this.loginPatForm.value).subscribe({
-      next:(value)=>{
-        if(value[0].patpassword==this.loginPatForm.value.patpassword){
-          
+    this.loginObj.getuserCredDoc(this.loginDocForm.value).subscribe({
+      next: (value) => {
+        if (value[0].docpassword === this.loginDocForm.value.docpassword) {
+          console.log("Logged in successfully");
+          this.router.navigate(['/doctor-dashboard']);
         }
       },
-      error:(err)=>{
+      error: (err) => {
         
       },
     })

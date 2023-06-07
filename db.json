@@ -8,6 +8,14 @@
       "patemail": "aritra.basu123@gmail.com",
       "patpassword": "aritrabasu",
       "id": 1
+    },
+    {
+      "patfirstname": "Tamonash",
+      "patlastname": "Pal",
+      "patphone": null,
+      "patemail": "tamonash.pal@gmail.com",
+      "patpassword": "tamonashpal",
+      "id": 2
     }
   ],
   "appointment": []
