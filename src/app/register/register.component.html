@@ -1,24 +1,24 @@
 <html class="vh-100">
   <div class="card mx-auto p-3 col-10 col-md-8 col-lg-10">
     <h1 class="mb-4">Register</h1>
+
     <div class="d-flex mb-4">
       <div class="form-check">
         <input
           class="form-check-input"
           type="radio"
           id="radio-btn-doctor"
-          formControlName="docprofile"
+          name="docprofile"
           (change)="setProfile('Doctor')"
         />
         <label class="form-check-label" for="radio-btn-doctor"> Doctor </label>
       </div>
-      <!-- Default checked radio -->
       <div class="form-check ms-4">
         <input
           class="form-check-input"
           type="radio"
           id="radio-btn-patient"
-          formControlName="patprofile"
+          name="docprofile"
           (change)="setProfile('Patient')"
         />
         <label class="form-check-label" for="radio-btn-patient">
@@ -27,7 +27,11 @@
       </div>
     </div>
 
-    <form  *ngIf="profileType == 'Patient'" [formGroup]="registerPatForm" (ngSubmit)="onPatFormSubmit()">
+    <form
+      *ngIf="profileType == 'Patient'"
+      [formGroup]="registerPatForm"
+      (ngSubmit)="onPatFormSubmit()"
+    >
       <div>
         <!--Name input-->
         <div class="mb-4 d-flex">
@@ -83,13 +87,11 @@
         <div class="form-outline mb-4">
           <input
             type="password"
-            id="password"
+            id="pass"
             class="form-control"
             formControlName="patpassword"
           />
-          <label class="form-label text-muted" for="password"
-            >New Password</label
-          >
+          <label class="form-label text-muted" for="pass">New Password</label>
         </div>
         <!-- <div class="form-outline mb-4">
           <input type="password" id="password" class="form-control" />
@@ -103,7 +105,11 @@
       </div>
     </form>
 
-    <form  *ngIf="profileType == 'Doctor'" [formGroup]="registerDocForm" (ngSubmit)="onDocFormSubmit()">
+    <form
+      *ngIf="profileType == 'Doctor'"
+      [formGroup]="registerDocForm"
+      (ngSubmit)="onDocFormSubmit()"
+    >
       <div>
         <span>Dr.</span>
         <!--Name input-->
@@ -237,7 +243,7 @@
         <div class="form-outline mb-3">
           <input
             type="address"
-            id="clinic-name"
+            id="clinic-address"
             class="form-control"
             formControlName="clinicaddress"
           />
@@ -275,56 +281,56 @@
               <div class="col-sm-3 form-check">
                 <input
                   type="checkbox"
-                  id="mon-chk"
+                  id="tues-chk"
                   class="form-check-input"
                   formControlName="tues"
                 />
-                <label for="mon-chk" class="form-check-label">Tuesday</label>
+                <label for="tues-chk" class="form-check-label">Tuesday</label>
               </div>
               <div class="col-sm-3 form-check">
                 <input
                   type="checkbox"
-                  id="mon-chk"
+                  id="wed-chk"
                   class="form-check-input"
                   formControlName="wed"
                 />
-                <label for="mon-chk" class="form-check-label">Wednesday</label>
+                <label for="wed-chk" class="form-check-label">Wednesday</label>
               </div>
               <div class="col-sm-3 form-check">
                 <input
                   type="checkbox"
-                  id="mon-chk"
+                  id="thurs-chk"
                   class="form-check-input"
                   formControlName="thurs"
                 />
-                <label for="mon-chk" class="form-check-label">Thursday</label>
+                <label for="thurs-chk" class="form-check-label">Thursday</label>
               </div>
               <div class="col-sm-3 form-check">
                 <input
                   type="checkbox"
-                  id="mon-chk"
+                  id="fri-chk"
                   class="form-check-input"
                   formControlName="fri"
                 />
-                <label for="mon-chk" class="form-check-label">Friday</label>
+                <label for="fri-chk" class="form-check-label">Friday</label>
               </div>
               <div class="col-sm-3 form-check">
                 <input
                   type="checkbox"
-                  id="mon-chk"
+                  id="sat-chk"
                   class="form-check-input"
                   formControlName="sat"
                 />
-                <label for="mon-chk" class="form-check-label">Saturday</label>
+                <label for="sat-chk" class="form-check-label">Saturday</label>
               </div>
               <div class="col-sm-3 form-check">
                 <input
                   type="checkbox"
-                  id="mon-chk"
+                  id="sun-chk"
                   class="form-check-input"
                   formControlName="sun"
                 />
-                <label for="mon-chk" class="form-check-label">Sunday</label>
+                <label for="sun-chk" class="form-check-label">Sunday</label>
               </div>
             </div>
           </div>
