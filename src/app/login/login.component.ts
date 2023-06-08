@@ -39,7 +39,7 @@ export class LoginComponent {
           if(formDetails.patpassword == response[0].patpassword){
             this.serviceObj.setLoginStatus(true);
             this.serviceObj.setLoginCredential('patient');
-            this.router.navigate(['/patient-dashboard']);
+            this.router.navigate(['/dashboard/doctor-list']);
           }
           else {
             alert('Invalid Password');

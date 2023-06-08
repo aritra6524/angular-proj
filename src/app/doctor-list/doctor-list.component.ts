@@ -10,11 +10,11 @@ interface Doctor {
 }
 
 @Component({
-  selector: 'app-patient-dashboard',
-  templateUrl: './patient-dashboard.component.html',
-  styleUrls: ['./patient-dashboard.component.css']
+  selector: 'app-doctor-list',
+  templateUrl: './doctor-list.component.html',
+  styleUrls: ['./doctor-list.component.css']
 })
-export class PatientDashboardComponent implements OnInit {
+export class DoctorListComponent implements OnInit {
   doctors: Doctor[] = [];
 
   constructor(private http: HttpClient) {}

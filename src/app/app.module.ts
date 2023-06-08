@@ -11,7 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard
     HomeComponent,
     AdminProfileComponent,
     UserProfileComponent,
-    PatientDashboardComponent
+    DashboardComponent,
+    DoctorListComponent
   ],
   imports: [
     BrowserModule,
