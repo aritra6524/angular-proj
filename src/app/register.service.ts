@@ -17,12 +17,12 @@ export class RegisterService{
     return this.hC.post('http://localhost:3000/patient', patDetails);
   }
 
-  getuserCredPat(emailid): Observable<Patient[]> {
+  getuserCredPat(emailid){
     return this.hC.get<Patient[]>(`http://localhost:3000/patient?patemail=${emailid}`);
   }
 
-  getuserCredDoc(emailid): Observable<Doctor> {
-    return this.hC.get<Doctor>(`http://localhost:3000/doctor?docemail=${emailid}`);
+  getuserCredDoc(emailid){
+    return this.hC.get<Doctor[]>(`http://localhost:3000/doctor?docemail=${emailid}`);
   }
 }
 

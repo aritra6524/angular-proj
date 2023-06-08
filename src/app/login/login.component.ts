@@ -14,7 +14,7 @@ export class LoginComponent {
   status: boolean;
   profileType: string = '';
 
-  constructor(private loginObj: RegisterService, private router: Router){}
+  constructor(private serviceObj: RegisterService, private router: Router){}
 
   ngOnInit(): void{
     this.loginPatForm = new FormGroup({
@@ -31,19 +31,21 @@ export class LoginComponent {
     this.profileType = profile;
   }
 
-  onPatLogin(): void {
-    console.log(this.loginPatForm.value.patpassword);
-    this.loginObj.getuserCredPat(this.loginPatForm.value).subscribe({
-      next: (value) => {
-        console.log("Value:", value);
-        console.log("Type of value[0].patpassword:", typeof value[0].patpassword);
-        console.log("Type of this.loginPatForm.value.patpassword:", typeof this.loginPatForm.value.patpassword);
-  
-        if (value && value.length > 0 && value[0].patpassword === this.loginPatForm.value.patpassword) {
-          console.log("Logged in successfully");
-          this.router.navigate(['/patient-dashboard']);
-        } else {
-          console.log("Invalid credentials");
+  onPatLogin() {
+    const formDetails=this.loginPatForm.value;
+    console.log(formDetails);
+    this.serviceObj.getuserCredPat(formDetails).subscribe({
+      next: (response) => {
+        if(response.length!=0){
+          console.log(response[0].patpassword);
+          if(formDetails.patpassword == response[0].patpassword){
+            console.log("Password matched");
+            this.router.navigate(['/patient-dashboard']);
+          }
+          else {
+            console.log("Invalid Password");
+            alert('Invalid Password');
+          }
         }
       },
       error: (err) => {
@@ -55,7 +57,7 @@ export class LoginComponent {
   
 
   onDocLogin(): void {
-    this.loginObj.getuserCredDoc(this.loginDocForm.value).subscribe({
+    this.serviceObj.getuserCredDoc(this.loginDocForm.value).subscribe({
       next: (value) => {
         if (value[0].docpassword === this.loginDocForm.value.docpassword) {
           console.log("Logged in successfully");
