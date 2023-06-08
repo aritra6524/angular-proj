@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { AppointmentService } from '../appointment.service';
-import { RegisterService } from '../register.service';
+import { ActivatedRoute } from '@angular/router';
 
 interface Doctor {
   docfirstname: string;
-  doclastname:string;
+  doclastname: string;
   docspecialization: string;
   docqualification: string;
   cliniccity: string;
@@ -14,28 +14,32 @@ interface Doctor {
 
 interface Patient {
   patfirstname: string;
-  patlastnme: string;
+  patlastname: string;
 }
 
 @Component({
   selector: 'app-book-appointment-page',
   templateUrl: './book-appointment-page.component.html',
-  styleUrls: ['./book-appointment-page.component.css']
+  styleUrls: ['./book-appointment-page.component.css'],
 })
 export class BookAppointmentPageComponent implements OnInit {
+  constructor(
+    private hC: HttpClient,
+    private serviceObj: AppointmentService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  constructor(private hC: HttpClient, private serviceObj: AppointmentService, private regserviceObj: RegisterService) {}
-  selectedDoctor:Doctor=null;
-  selectedPatient:Patient=null;
+  selectedDoctor: Doctor = null;
+  selectedPatient: Patient = null;
 
   ngOnInit(): void {
     this.serviceObj.getDoctorDetails().subscribe({
-      next:(data)=>{
-        this.selectedDoctor=data;
+      next: (data) => {
+        this.selectedDoctor = data;
       },
-      error:(error) => {
-          console.error('Error fetching doctors:', error);
-      }
-    })
+      error: (error) => {
+        console.error('Error fetching doctors:', error);
+      },
+    });
   }
 }

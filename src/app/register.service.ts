@@ -21,7 +21,12 @@ export class RegisterService {
   }
 
   setLoginCredential(credentials) {
-    return this.loginCredentialsBS.next(credentials);
+    this.loginCredentials = credentials;
+    this.loginCredentialsBS.next(credentials);
+  }
+
+  getLoginCredential() {
+    return this.loginCredentialsBS.asObservable();
   }
 
   registerDoctor(docDetails: any) {

@@ -3,19 +3,21 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppointmentService {
-
   private doctorDetails: Doctor = null;
+  private loginCredentials: Patient | Doctor = null;
 
-  constructor(private hC: HttpClient) { }
+  constructor(private hC: HttpClient) {}
 
   doctorDetailsBS = new BehaviorSubject(this.doctorDetails);
+  loginCredentialsBS = new BehaviorSubject(this.loginCredentials);
 
   setDoctorDetails(doctor) {
     // console.log("Setting Doctor: ");
     // console.log(doctor);
+    this.doctorDetails = doctor;
     return this.doctorDetailsBS.next(doctor);
   }
 
@@ -44,4 +46,9 @@ export interface Doctor {
   fri: boolean;
   sat: boolean;
   sun: boolean;
+}
+
+export interface Patient {
+  patfirstname: string;
+  patlastname: string;
 }

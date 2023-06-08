@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegisterService } from '../register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerDocForm: FormGroup;
   profileType: string = 'Patient';
 
-  constructor(private registerObj: RegisterService) {}
+  constructor(private registerObj: RegisterService, private router: Router) {}
 
   ngOnInit(): void {
     this.registerPatForm = new FormGroup({
@@ -52,7 +53,9 @@ export class RegisterComponent implements OnInit {
   onPatFormSubmit(): void {
     console.log(this.registerPatForm.value);
     this.registerObj.registerPatient(this.registerPatForm.value).subscribe({
-      next: (value) => {},
+      next: (value) => {
+        this.router.navigate(['/login']);
+      },
       error: (err) => {},
     });
   }
@@ -60,7 +63,9 @@ export class RegisterComponent implements OnInit {
   onDocFormSubmit(): void {
     console.log(this.registerDocForm.value);
     this.registerObj.registerDoctor(this.registerDocForm.value).subscribe({
-      next: (value) => {},
+      next: (value) => {
+        this.router.navigate(['/login']);
+      },
       error: (err) => {},
     });
   }
