@@ -33,7 +33,6 @@ export class RegisterService {
   }
 
   getuserCredPat(emailid) {
-    console.log(emailid);
     return this.hC.get<Patient[]>(
       `http://localhost:3000/patient?patemail=${emailid}`
     );
