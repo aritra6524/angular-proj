@@ -10,7 +10,7 @@ import { RegisterService } from '../register.service';
 export class RegisterComponent implements OnInit {
   registerPatForm: FormGroup;
   registerDocForm: FormGroup;
-  profileType: string = '';
+  profileType: string = 'Patient';
 
   constructor(private registerObj: RegisterService) {}
 

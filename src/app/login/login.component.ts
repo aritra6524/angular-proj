@@ -12,7 +12,7 @@ export class LoginComponent {
   loginPatForm: FormGroup;
   loginDocForm: FormGroup;
   status: boolean;
-  profileType: string = '';
+  profileType: string = 'Patient';
 
   constructor(private serviceObj: RegisterService, private router: Router){}
 
@@ -52,19 +52,24 @@ export class LoginComponent {
     });
   }
   
-  
-
   onDocLogin(): void {
-    this.serviceObj.getuserCredDoc(this.loginDocForm.value).subscribe({
-      next: (value) => {
-        if (value[0].docpassword === this.loginDocForm.value.docpassword) {
-          console.log("Logged in successfully");
-          this.router.navigate(['/doctor-dashboard']);
+    const formDetails=this.loginDocForm.value;
+    this.serviceObj.getuserCredDoc(formDetails.docemail).subscribe({
+      next: (response) => {
+        if(response.length!=0){
+          if(formDetails.docpassword == response[0].docpassword){
+            this.serviceObj.setLoginStatus(true);
+            this.serviceObj.setLoginCredential('doctor');
+            this.router.navigate(['/dashboard']);
+          }
+          else {
+            alert('Invalid Password');
+          }
         }
       },
       error: (err) => {
-        
-      },
-    })
+        console.log("Error occurred:", err);
+      }
+    });
   }
 }

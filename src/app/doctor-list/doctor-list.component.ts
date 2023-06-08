@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AppointmentService } from '../appointment.service';
+import { FormGroup } from '@angular/forms';
 
 interface Doctor {
+  docid: number;
   docfirstname: string;
-  doclastname:string;
+  doclastname: string;
   docspecialization: string;
   docqualification: string;
   cliniccity: string;
@@ -12,19 +16,25 @@ interface Doctor {
 @Component({
   selector: 'app-doctor-list',
   templateUrl: './doctor-list.component.html',
-  styleUrls: ['./doctor-list.component.css']
+  styleUrls: ['./doctor-list.component.css'],
 })
 export class DoctorListComponent implements OnInit {
+  docForm: FormGroup;
+
   doctors: Doctor[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private hC: HttpClient,
+    private router: Router,
+    private serviceObj: AppointmentService
+  ) {}
 
   ngOnInit() {
     this.fetchDoctors();
   }
 
   fetchDoctors() {
-    this.http.get<Doctor[]>('http://localhost:3000/doctor').subscribe(
+    this.hC.get<Doctor[]>('http://localhost:3000/doctor').subscribe(
       (data) => {
         this.doctors = data;
       },
@@ -34,8 +44,8 @@ export class DoctorListComponent implements OnInit {
     );
   }
 
-  bookAppointment(doctor: Doctor) {
-    console.log(`Booking appointment with ${doctor.docfirstname}${doctor.doclastname}`);
-    // Implement your appointment booking logic here
+  toAppointmentPage(doctor) {
+    this.serviceObj.setDoctorDetails(doctor);
+    this.router.navigate(['/dashboard/book-appointment-page']);
   }
 }

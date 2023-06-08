@@ -8,11 +8,10 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { AdminProfileComponent } from './admin-profile/admin-profile.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
+import { BookAppointmentPageComponent } from './book-appointment-page/book-appointment-page.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +21,9 @@ import { DoctorListComponent } from './doctor-list/doctor-list.component';
     LoginComponent,
     FooterComponent,
     HomeComponent,
-    AdminProfileComponent,
-    UserProfileComponent,
     DashboardComponent,
-    DoctorListComponent
+    DoctorListComponent,
+    BookAppointmentPageComponent
   ],
   imports: [
     BrowserModule,

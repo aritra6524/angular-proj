@@ -1,4 +1,13 @@
 html{
-    background: url('https://img.freepik.com/free-vector/flat-hand-drawn-hospital-reception-scene_52683-54613.jpg') no-repeat center;
-    background-size: cover;
+    background: url('/assets/8507-removebg-preview.png') no-repeat center;
+    background-size: contain;
+}
+
+.card{
+    margin-top: 3;
+    background-color: rgba(246, 251, 255, 0.932);
+}
+
+.bi-building-fill-add{
+    color: rgba(1, 133, 1, 0.651);
 }
