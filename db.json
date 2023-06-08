@@ -43,6 +43,28 @@
       "sat": true,
       "sun": true,
       "id": 2
+    },
+    {
+      "docfirstname": "P.K.",
+      "doclastname": "Banerjee",
+      "docregd": 2233556,
+      "docspecialization": "Cardiology",
+      "docqualification": "MBBS, MS(Cardio)",
+      "docphone": 8394824938,
+      "docemail": "pkbanerjee@gmail.com",
+      "docpassword": "pkbanerjee",
+      "clinicname": "Cognizant Clinic",
+      "cliniccity": "Action Area-1, New Town",
+      "clinicaddress": "Kolkata",
+      "doctime": "14:00",
+      "mon": true,
+      "tues": false,
+      "wed": true,
+      "thurs": false,
+      "fri": false,
+      "sat": false,
+      "sun": true,
+      "id": 3
     }
   ],
   "patient": [

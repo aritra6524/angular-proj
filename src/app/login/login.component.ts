@@ -33,17 +33,15 @@ export class LoginComponent {
 
   onPatLogin() {
     const formDetails=this.loginPatForm.value;
-    console.log(formDetails);
-    this.serviceObj.getuserCredPat(formDetails).subscribe({
+    this.serviceObj.getuserCredPat(formDetails.patemail).subscribe({
       next: (response) => {
         if(response.length!=0){
-          console.log(response[0].patpassword);
           if(formDetails.patpassword == response[0].patpassword){
-            console.log("Password matched");
+            this.serviceObj.setLoginStatus(true);
+            this.serviceObj.setLoginCredential('patient');
             this.router.navigate(['/patient-dashboard']);
           }
           else {
-            console.log("Invalid Password");
             alert('Invalid Password');
           }
         }

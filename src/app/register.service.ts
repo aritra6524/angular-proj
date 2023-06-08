@@ -1,56 +1,76 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class RegisterService{
+export class RegisterService {
+  private loginStatus: boolean = false;
+  private loginCredentials: Patient = null;
+  private profileStatus: string = '';
 
-  constructor(private hC: HttpClient) { }
+  constructor(private hC: HttpClient) {}
 
-  registerDoctor(docDetails:any){
+  loginStatusBS = new BehaviorSubject(this.loginStatus);
+  loginCredentialsBS = new BehaviorSubject(this.loginCredentials);
+  profilestatusBS = new BehaviorSubject(this.profileStatus);
+
+  setLoginStatus(status) {
+    return this.loginStatusBS.next(status);
+  }
+
+  setLoginCredential(credentials) {
+    return this.loginCredentialsBS.next(credentials);
+  }
+
+  registerDoctor(docDetails: any) {
     return this.hC.post('http://localhost:3000/doctor', docDetails);
   }
 
-  registerPatient(patDetails:any){
+  registerPatient(patDetails: any) {
     return this.hC.post('http://localhost:3000/patient', patDetails);
   }
 
-  getuserCredPat(emailid){
-    return this.hC.get<Patient[]>(`http://localhost:3000/patient?patemail=${emailid}`);
+  getuserCredPat(emailid) {
+    console.log(emailid);
+    return this.hC.get<Patient[]>(
+      `http://localhost:3000/patient?patemail=${emailid}`
+    );
   }
 
-  getuserCredDoc(emailid){
-    return this.hC.get<Doctor[]>(`http://localhost:3000/doctor?docemail=${emailid}`);
+  getuserCredDoc(emailid) {
+    return this.hC.get<Doctor[]>(
+      `http://localhost:3000/doctor?docemail=${emailid}`
+    );
   }
 }
 
-export interface Patient{
-    patfirstname: string,
-    patlastname: string,
-    patphone: number,
-    patemail: string,
-    patpassword: string,
+export interface Patient {
+  patfirstname: string;
+  patlastname: string;
+  patphone: number;
+  patemail: string;
+  patpassword: string;
 }
 
-export interface Doctor{
-    docfirstname: string,
-    doclastname: string,
-    docregd: number,
-    docspecialization: string,
-    docqualification: string,
-    docphone: number,
-    docemail: string,
-    docpassword: string,
-    clinicname: string,
-    clinicaddress: string,
-    doctime: string,
-    mon: boolean,
-    tues: boolean,
-    wed: boolean,
-    thurs: boolean,
-    fri: boolean,
-    sat: boolean,
-    sun: boolean
+export interface Doctor {
+  docfirstname: string;
+  doclastname: string;
+  docregd: number;
+  docspecialization: string;
+  docqualification: string;
+  docphone: number;
+  docemail: string;
+  docpassword: string;
+  clinicname: string;
+  clinicaddress: string;
+  doctime: string;
+  mon: boolean;
+  tues: boolean;
+  wed: boolean;
+  thurs: boolean;
+  fri: boolean;
+  sat: boolean;
+  sun: boolean;
 }
