@@ -65,6 +65,28 @@
       "sat": false,
       "sun": true,
       "id": 3
+    },
+    {
+      "docfirstname": "T.P.",
+      "doclastname": "Dhar",
+      "docregd": 566778,
+      "docspecialization": "Diabetology",
+      "docqualification": "MBBS",
+      "docphone": 657898765,
+      "docemail": "tpdhar@gmail.com",
+      "docpassword": "tpdhar",
+      "clinicname": "Dhar's Clinic",
+      "cliniccity": "Kolkata",
+      "clinicaddress": "Ballygunj",
+      "doctime": "19:40",
+      "mon": true,
+      "tues": false,
+      "wed": true,
+      "thurs": false,
+      "fri": true,
+      "sat": false,
+      "sun": false,
+      "id": 4
     }
   ],
   "patient": [

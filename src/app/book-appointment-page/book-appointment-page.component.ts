@@ -8,6 +8,7 @@ interface Doctor {
   docspecialization: string;
   docqualification: string;
   cliniccity: string;
+  clinicaddress: string;
 }
 
 @Component({
