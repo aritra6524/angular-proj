@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { RegisterService } from '../register.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +8,10 @@ import { UserService } from '../user.service';
 })
 export class NavbarComponent implements OnInit {
   status: boolean;
-  constructor(public us: UserService){}
+  constructor(public userObj : RegisterService){}
 
   ngOnInit(): void{
-    this.us.getUserLoginStatus().subscribe({
+    this.userObj.getPatientLoginStatus().subscribe({
       next: (status) => {this.status=status},
       error: (err) => {console.log("err is ",err)}
     })

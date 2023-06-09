@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { RegisterService } from '../register.service';
 
 @Component({
@@ -32,23 +32,16 @@ export class LoginComponent {
   }
 
   onPatLogin() {
-    const formDetails = this.loginPatForm.value;
-    this.serviceObj.getuserCredPat(formDetails.patemail).subscribe({
+    const patientCredObj = this.loginPatForm.value;
+    this.serviceObj.getuserCredPat(patientCredObj.patemail).subscribe({
       next: (response) => {
         if (response.length != 0) {
-          if (formDetails.patpassword == response[0].patpassword) {
-            //Set the logged-in username as state
-            const navigationExtras: NavigationExtras = {
-              state: {
-                username: response[0].patemail,
-                firtname: response[0].patfirstname,
-                lastname: response[0].patlastname,
-              },
-            };
-
-            this.serviceObj.setLoginStatus(true);
-            this.serviceObj.setLoginCredential(response[0]);
-            this.router.navigate(['/dashboard/doctor-list'], navigationExtras);
+          if (patientCredObj.patpassword == response[0].patpassword) {
+            //update global state
+            this.serviceObj.setPatientLoginStatus(true);
+            this.serviceObj.setCurrentPatient(response[0]);
+            //navigate to dashboard
+            this.router.navigate(['/dashboard/doctor-list',patientCredObj.patemail]);
           } else {
             alert('Invalid Password');
           }
@@ -61,22 +54,22 @@ export class LoginComponent {
   }
 
   onDocLogin(): void {
-    const formDetails = this.loginDocForm.value;
-    this.serviceObj.getuserCredDoc(formDetails.docemail).subscribe({
-      next: (response) => {
-        if (response.length != 0) {
-          if (formDetails.docpassword == response[0].docpassword) {
-            this.serviceObj.setLoginStatus(true);
-            this.serviceObj.setLoginCredential('doctor');
-            this.router.navigate(['/dashboard']);
-          } else {
-            alert('Invalid Password');
-          }
-        }
-      },
-      error: (err) => {
-        console.log('Error occurred:', err);
-      },
-    });
+    // const formDetails = this.loginDocForm.value;
+    // this.serviceObj.getuserCredDoc(formDetails.docemail).subscribe({
+    //   next: (response) => {
+    //     if (response.length != 0) {
+    //       if (formDetails.docpassword == response[0].docpassword) {
+    //         this.serviceObj.setLoginStatus(true);
+    //         this.serviceObj.setLoginCredential('doctor');
+    //         this.router.navigate(['/dashboard']);
+    //       } else {
+    //         alert('Invalid Password');
+    //       }
+    //     }
+    //   },
+    //   error: (err) => {
+    //     console.log('Error occurred:', err);
+    //   },
+    // });
   }
 }

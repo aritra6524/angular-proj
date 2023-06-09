@@ -13,7 +13,16 @@
             {{ selectedDoctor.docspecialization }}
           </p>
           <p class="card-text">
-            {{ selectedDoctor.docqualification }}
+            {{ selectedDoctor.docphone }}
+          </p>
+          <p class="card-text">
+            {{ selectedDoctor.docemail }}
+          </p>
+          <p class="card-text">
+            {{ selectedDoctor.docpassword }}
+          </p>
+          <p class="card-text">
+            {{ selectedDoctor.clinicname }}
           </p>
           <p class="card-text">
             {{ selectedDoctor.cliniccity }}
@@ -21,8 +30,38 @@
           <p class="card-text">
             {{ selectedDoctor.clinicaddress }}
           </p>
+
+          <p *ngIf="selectedDoctor.mon == true">Monday</p>
+          <p *ngIf="selectedDoctor.tues == true">Tuesday</p>
+          <p *ngIf="selectedDoctor.wed == true">Wednesday</p>
+          <p *ngIf="selectedDoctor.thurs == true">Thursday</p>
+          <p *ngIf="selectedDoctor.fri == true">Friday</p>
+          <p *ngIf="selectedDoctor.sat == true">Saturday</p>
+          <p *ngIf="selectedDoctor.sun == true">Sunday</p>
+
+          <p class="card-text">
+            {{ selectedDoctor.doctime }}
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ selectedPatient.patfirstname }}
+            {{ selectedPatient.patlastname }}
+          </h5>
+          <p class="card-text">
+            {{ selectedPatient.patemail }}
+          </p>
+          <p class="card-text">
+            {{ selectedPatient.patphone }}
+          </p>
         </div>
       </div>
     </div>
   </div>
+  <form [formGroup]="appointmentForm" (ngSubmit)="bookAppointment();">
+    <input type="date" formControlName="date" />
+    <button type="submit">Book Appointment</button>
+  </form>
 </div>

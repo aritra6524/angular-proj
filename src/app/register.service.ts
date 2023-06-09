@@ -12,22 +12,48 @@ export class RegisterService {
 
   constructor(private hC: HttpClient) {}
 
-  loginStatusBS = new BehaviorSubject(this.loginStatus);
-  loginCredentialsBS = new BehaviorSubject(this.loginCredentials);
-  profilestatusBS = new BehaviorSubject(this.profileStatus);
+  patientLoginStatus: boolean = false;
+  currentPatient: Patient = null;
 
-  setLoginStatus(status) {
-    return this.loginStatusBS.next(status);
+  patientLoginStatusBehaviorSubject = new BehaviorSubject(this.patientLoginStatus);
+  currentPatientBehaviorSubject = new BehaviorSubject(this.currentPatient);
+
+  //update Login status
+  setPatientLoginStatus(status){
+    this.patientLoginStatusBehaviorSubject.next(status);
   }
 
-  setLoginCredential(credentials) {
-    this.loginCredentials = credentials;
-    this.loginCredentialsBS.next(credentials);
+  //get Login status
+  getPatientLoginStatus(){
+    return this.patientLoginStatusBehaviorSubject.asObservable();
   }
 
-  getLoginCredential() {
-    return this.loginCredentialsBS.asObservable();
+  //update current user
+  setCurrentPatient(userObj){
+    this.currentPatientBehaviorSubject.next(userObj);
   }
+
+  //get current user
+  getCurrentPatient(){
+    return this.currentPatientBehaviorSubject.asObservable();
+  }
+
+  // loginStatusBS = new BehaviorSubject(this.loginStatus);
+  // loginCredentialsBS = new BehaviorSubject(this.loginCredentials);
+  // profilestatusBS = new BehaviorSubject(this.profileStatus);
+
+  // setLoginStatus(status) {
+  //   return this.loginStatusBS.next(status);
+  // }
+
+  // setLoginCredential(credentials) {
+  //   this.loginCredentials = credentials;
+  //   this.loginCredentialsBS.next(credentials);
+  // }
+
+  // getLoginCredential() {
+  //   return this.loginCredentialsBS.asObservable();
+  // }
 
   registerDoctor(docDetails: any) {
     return this.hC.post('http://localhost:3000/doctor', docDetails);

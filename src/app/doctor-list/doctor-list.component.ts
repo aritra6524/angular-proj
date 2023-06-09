@@ -5,7 +5,6 @@ import { AppointmentService } from '../appointment.service';
 import { FormGroup } from '@angular/forms';
 
 interface Doctor {
-  docid: number;
   docfirstname: string;
   doclastname: string;
   docspecialization: string;
