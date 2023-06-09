@@ -18,49 +18,53 @@ export class RegisterService {
   doctorLoginStatus: boolean = false;
   currentDoctor: Doctor = null;
 
-  patientLoginStatusBehaviorSubject = new BehaviorSubject(this.patientLoginStatus);
+  patientLoginStatusBehaviorSubject = new BehaviorSubject(
+    this.patientLoginStatus
+  );
   currentPatientBehaviorSubject = new BehaviorSubject(this.currentPatient);
 
-  doctorLoginStatusBehaviorSubject = new BehaviorSubject(this.doctorLoginStatus);
+  doctorLoginStatusBehaviorSubject = new BehaviorSubject(
+    this.doctorLoginStatus
+  );
   currentDoctorBehaviorSubject = new BehaviorSubject(this.currentDoctor);
 
   //update Login status
-  setDoctorLoginStatus(status){
+  setDoctorLoginStatus(status) {
     this.doctorLoginStatusBehaviorSubject.next(status);
   }
 
   //get Login status
-  getDoctorLoginStatus(){
+  getDoctorLoginStatus() {
     return this.doctorLoginStatusBehaviorSubject.asObservable();
   }
 
   //update current user
-  setCurrentDoctor(userObj){
+  setCurrentDoctor(userObj) {
     return this.currentDoctorBehaviorSubject.next(userObj);
   }
 
   //get current user
-  getCurrentDoctor(){
+  getCurrentDoctor() {
     return this.currentDoctorBehaviorSubject.asObservable();
   }
 
   //update Login status
-  setPatientLoginStatus(status){
+  setPatientLoginStatus(status) {
     this.patientLoginStatusBehaviorSubject.next(status);
   }
 
   //get Login status
-  getPatientLoginStatus(){
+  getPatientLoginStatus() {
     return this.patientLoginStatusBehaviorSubject.asObservable();
   }
 
   //update current user
-  setCurrentPatient(userObj){
+  setCurrentPatient(userObj) {
     this.currentPatientBehaviorSubject.next(userObj);
   }
 
   //get current user
-  getCurrentPatient(){
+  getCurrentPatient() {
     return this.currentPatientBehaviorSubject.asObservable();
   }
 

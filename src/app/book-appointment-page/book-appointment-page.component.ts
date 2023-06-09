@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AppointmentService } from '../appointment.service';
 import { RegisterService } from '../register.service';
@@ -124,5 +123,12 @@ export class BookAppointmentPageComponent implements OnInit {
         console.error('Error booking appointment :', error);
       },
     });
+    alert(
+      'Appointment with Dr. ' +
+        this.appointment.docfirstname +
+        ' ' +
+        this.appointment.doclastname +
+        ' Booked Successfully'
+    );
   }
 }

@@ -1,19 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
   status: boolean;
-  constructor(public userObj : RegisterService){}
+  constructor(public userObj: RegisterService, public router: Router) {}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.userObj.getPatientLoginStatus().subscribe({
-      next: (status) => {this.status=status},
-      error: (err) => {console.log("err is ",err)}
-    })
+      next: (status) => {
+        this.status = status;
+      },
+      error: (err) => {
+        console.log('err is ', err);
+      },
+    });
+  }
+
+  onLogout() {
+    this.userObj.setPatientLoginStatus(false);
+    this.userObj.setCurrentPatient(null);
+    this.userObj.setDoctorLoginStatus(false);
+    this.userObj.setCurrentDoctor(null);
+    this.router.navigate(['login']);
   }
 }

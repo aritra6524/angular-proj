@@ -4,7 +4,7 @@
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
-      <button
+      <!-- <button
         class="navbar-toggler"
         type="button"
         data-mdb-toggle="collapse"
@@ -14,7 +14,7 @@
         aria-label="Toggle navigation"
       >
         <i class="fas fa-bars"></i>
-      </button>
+      </button> -->
 
       <!-- Brand -->
       <a class="navbar-brand">
@@ -43,10 +43,18 @@
           <a class="nav-link" routerLink="register" *ngIf="!status">Register</a>
         </li>
         <li>
-          <button class="nav-link login-btn ms-2 me-1" routerLink="login" *ngIf="!status">
+          <button
+            class="nav-link login-btn ms-2 me-1"
+            routerLink="login"
+            *ngIf="!status"
+          >
             Login
           </button>
-          <button class="nav-link login-btn ms-2 me-1" *ngIf="status">
+          <button
+            class="nav-link login-btn ms-2 me-1"
+            *ngIf="status"
+            (click)="onLogout()"
+          >
             Logout
           </button>
         </li>

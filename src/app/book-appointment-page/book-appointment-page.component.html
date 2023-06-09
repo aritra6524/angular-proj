@@ -2,7 +2,7 @@
 
 <div class="appointment-page">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 d-flex">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">
@@ -38,7 +38,7 @@
           <p *ngIf="selectedDoctor.fri == true">Friday</p>
           <p *ngIf="selectedDoctor.sat == true">Saturday</p>
           <p *ngIf="selectedDoctor.sun == true">Sunday</p>
-          
+
           <p class="card-text">
             {{ selectedDoctor.doctime }}
           </p>
@@ -60,7 +60,7 @@
       </div>
     </div>
   </div>
-  <form [formGroup]="appointmentForm" (ngSubmit)="bookAppointment();">
+  <form [formGroup]="appointmentForm" (ngSubmit)="bookAppointment()">
     <input type="date" formControlName="date" />
     <button type="submit">Book Appointment</button>
   </form>
