@@ -7,9 +7,20 @@ import { FormGroup } from '@angular/forms';
 interface Doctor {
   docfirstname: string;
   doclastname: string;
+  docregd: string;
   docspecialization: string;
   docqualification: string;
+  clinicname: string;
   cliniccity: string;
+  clinicaddress: string;
+  doctime: string;
+  mon: boolean;
+  tues: boolean;
+  wed: boolean;
+  thurs: boolean;
+  fri: boolean;
+  sat: boolean;
+  sun: boolean;
 }
 
 @Component({
@@ -17,6 +28,7 @@ interface Doctor {
   templateUrl: './doctor-list.component.html',
   styleUrls: ['./doctor-list.component.css'],
 })
+
 export class DoctorListComponent implements OnInit {
   docForm: FormGroup;
 

@@ -54,22 +54,24 @@ export class LoginComponent {
   }
 
   onDocLogin(): void {
-    // const formDetails = this.loginDocForm.value;
-    // this.serviceObj.getuserCredDoc(formDetails.docemail).subscribe({
-    //   next: (response) => {
-    //     if (response.length != 0) {
-    //       if (formDetails.docpassword == response[0].docpassword) {
-    //         this.serviceObj.setLoginStatus(true);
-    //         this.serviceObj.setLoginCredential('doctor');
-    //         this.router.navigate(['/dashboard']);
-    //       } else {
-    //         alert('Invalid Password');
-    //       }
-    //     }
-    //   },
-    //   error: (err) => {
-    //     console.log('Error occurred:', err);
-    //   },
-    // });
+    const doctorCredObj = this.loginDocForm.value;
+    this.serviceObj.getuserCredDoc(doctorCredObj.docemail).subscribe({
+      next: (response) => {
+        if (response.length != 0) {
+          if (doctorCredObj.docpassword == response[0].docpassword) {
+            //update global state
+            this.serviceObj.setDoctorLoginStatus(true);
+            this.serviceObj.setCurrentDoctor(response[0]);
+            //navigate to dashboard
+            this.router.navigate(['/dashboard/patient-list',doctorCredObj.docemail]);
+          } else {
+            alert('Invalid Password');
+          }
+        }
+      },
+      error: (err) => {
+        console.log('Error occurred:', err);
+      },
+    });
   }
 }

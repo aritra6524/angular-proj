@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { BookAppointmentPageComponent } from './book-appointment-page/book-appointment-page.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: 'doctor-list/:patemail', component: DoctorListComponent },
+      { path: 'patient-list/:docemail', component: PatientListComponent },
       { path: 'book-appointment-page', component: BookAppointmentPageComponent }
     ],
   },

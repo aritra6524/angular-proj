@@ -15,8 +15,34 @@ export class RegisterService {
   patientLoginStatus: boolean = false;
   currentPatient: Patient = null;
 
+  doctorLoginStatus: boolean = false;
+  currentDoctor: Doctor = null;
+
   patientLoginStatusBehaviorSubject = new BehaviorSubject(this.patientLoginStatus);
   currentPatientBehaviorSubject = new BehaviorSubject(this.currentPatient);
+
+  doctorLoginStatusBehaviorSubject = new BehaviorSubject(this.doctorLoginStatus);
+  currentDoctorBehaviorSubject = new BehaviorSubject(this.currentDoctor);
+
+  //update Login status
+  setDoctorLoginStatus(status){
+    this.doctorLoginStatusBehaviorSubject.next(status);
+  }
+
+  //get Login status
+  getDoctorLoginStatus(){
+    return this.doctorLoginStatusBehaviorSubject.asObservable();
+  }
+
+  //update current user
+  setCurrentDoctor(userObj){
+    return this.currentDoctorBehaviorSubject.next(userObj);
+  }
+
+  //get current user
+  getCurrentDoctor(){
+    return this.currentDoctorBehaviorSubject.asObservable();
+  }
 
   //update Login status
   setPatientLoginStatus(status){
@@ -95,6 +121,7 @@ export interface Doctor {
   docpassword: string;
   clinicname: string;
   clinicaddress: string;
+  cliniccity: string;
   doctime: string;
   mon: boolean;
   tues: boolean;

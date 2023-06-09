@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { BookAppointmentPageComponent } from './book-appointment-page/book-appointment-page.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BookAppointmentPageComponent } from './book-appointment-page/book-appoi
     HomeComponent,
     DashboardComponent,
     DoctorListComponent,
-    BookAppointmentPageComponent
+    BookAppointmentPageComponent,
+    PatientListComponent
   ],
   imports: [
     BrowserModule,
