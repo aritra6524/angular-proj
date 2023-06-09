@@ -41,7 +41,6 @@ interface Appointment {
   docqualification: string;
   docphone: number;
   docemail: string;
-  docpassword: string;
   clinicname: string;
   cliniccity: string;
   clinicaddress: string;
@@ -65,10 +64,8 @@ interface Appointment {
   templateUrl: './book-appointment-page.component.html',
   styleUrls: ['./book-appointment-page.component.css'],
 })
-
 export class BookAppointmentPageComponent implements OnInit {
   constructor(
-    
     private serviceObj: AppointmentService,
     private registerServiceObj: RegisterService
   ) {}
@@ -80,7 +77,7 @@ export class BookAppointmentPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.appointmentForm = new FormGroup({
-      date: new FormControl(null)
+      date: new FormControl(null),
     });
 
     this.serviceObj.getDoctorDetails().subscribe({
@@ -94,23 +91,35 @@ export class BookAppointmentPageComponent implements OnInit {
     this.registerServiceObj.getCurrentPatient().subscribe({
       next: (data) => {
         this.selectedPatient = data;
-        
       },
       error: (error) => {
         console.error('Error fetching patients:', error);
-      }
+      },
     });
   }
 
-  bookAppointment(){
-    // console.log(this.appointmentForm.value.date);
-    // this.appointment = Object.assign({}, this.selectedDoctor, this.selectedPatient, {appointmentDate:this.appointmentForm.value.date });
-    // console.log("this.appointment");
-    this.appointment = Object.assign({}, this.selectedDoctor, this.selectedPatient, {appointmentDate:this.appointmentForm.value.date });
+  bookAppointment() {
+    this.appointment = Object.assign({
+      docfirstname: this.selectedDoctor.docfirstname,
+      doclastname: this.selectedDoctor.doclastname,
+      docregd: this.selectedDoctor.docregd,
+      docspecialization: this.selectedDoctor.docspecialization,
+      docqualification: this.selectedDoctor.docqualification,
+      docphone: this.selectedDoctor.docphone,
+      docemail: this.selectedDoctor.docemail,
+      clinicname: this.selectedDoctor.clinicname,
+      cliniccity: this.selectedDoctor.cliniccity,
+      clinicaddress: this.selectedDoctor.clinicaddress,
+      doctime: this.selectedDoctor.doctime,
+      patfirstname: this.selectedPatient.patfirstname,
+      patlastname: this.selectedPatient.patlastname,
+      patemail: this.selectedPatient.patemail,
+      patphone: this.selectedPatient.patphone,
+      appointmentDate: this.appointmentForm.value.date,
+    });
+
     this.serviceObj.setAppointment(this.appointment).subscribe({
-      next: (data) => {
-        
-      },
+      next: (data) => {},
       error: (error) => {
         console.error('Error booking appointment :', error);
       },
