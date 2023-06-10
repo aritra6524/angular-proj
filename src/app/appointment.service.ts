@@ -14,11 +14,8 @@ export class AppointmentService {
 
   doctorDetailsBS = new BehaviorSubject(this.doctorDetails);
   loginCredentialsBS = new BehaviorSubject(this.loginCredentials);
-  // appointmentDetailsBS = new BehaviorSubject(this.appointmentDetails);
 
   setDoctorDetails(doctor) {
-    // console.log("Setting Doctor: ");
-    // console.log(doctor);
     this.doctorDetails = doctor;
     return this.doctorDetailsBS.next(doctor);
   }
@@ -27,12 +24,21 @@ export class AppointmentService {
     return this.doctorDetailsBS.asObservable();
   }
 
-  setAppointment(appointment){
+  setAppointment(appointment) {
     return this.hC.post('http://localhost:3000/appointment', appointment);
   }
 
   addAppointmentDate(date) {
     return this.hC.post('http://localhost:3000/appointment', date);
+  }
+
+  cancelAppointment(appointment: any) {
+    return this.hC
+      .delete(`http://localhost:3000/appointment/${appointment.id}`)
+      .subscribe(
+        (data) => {},
+        (error) => {}
+      );
   }
 }
 

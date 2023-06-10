@@ -207,47 +207,17 @@
       "patemail": "somesh@gmail.com",
       "patpassword": "12345",
       "id": 12
+    },
+    {
+      "patfirstname": null,
+      "patlastname": null,
+      "patphone": null,
+      "patemail": null,
+      "patpassword": null,
+      "id": 13
     }
   ],
   "appointment": [
-    {
-      "docfirstname": "Prabir",
-      "doclastname": "Biswas",
-      "docregd": 123456,
-      "docspecialization": "General Medicine",
-      "docqualification": "MD (General Medicine)",
-      "docphone": 987656789,
-      "docemail": "prabir.biswas@gmail.com",
-      "clinicname": "TKBM Doctors Chamber",
-      "cliniccity": "Kolkata",
-      "clinicaddress": "Netaji Nagar",
-      "doctime": "16:00",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "appointmentDate": "2023-06-22",
-      "id": 1
-    },
-    {
-      "docfirstname": "Prabir",
-      "doclastname": "Biswas",
-      "docregd": 123456,
-      "docspecialization": "General Medicine",
-      "docqualification": "MD (General Medicine)",
-      "docphone": 987656789,
-      "docemail": "prabir.biswas@gmail.com",
-      "clinicname": "TKBM Doctors Chamber",
-      "cliniccity": "Kolkata",
-      "clinicaddress": "Netaji Nagar",
-      "doctime": "16:00",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "appointmentDate": "2023-06-22",
-      "id": 2
-    },
     {
       "docfirstname": "Tanvir",
       "doclastname": "Alam",
@@ -285,25 +255,6 @@
       "patphone": 9876546789,
       "appointmentDate": "2023-06-28",
       "id": 4
-    },
-    {
-      "docfirstname": "P.K.",
-      "doclastname": "Banerjee",
-      "docregd": 2233556,
-      "docspecialization": "Cardiology",
-      "docqualification": "MBBS, MS(Cardio)",
-      "docphone": 8394824938,
-      "docemail": "pkbanerjee@gmail.com",
-      "clinicname": "Cognizant Clinic",
-      "cliniccity": "Kolkata",
-      "clinicaddress": "Action Area-1, New Town",
-      "doctime": "14:00",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "appointmentDate": "2023-06-28",
-      "id": 5
     },
     {
       "docfirstname": "T.P.",
@@ -361,25 +312,6 @@
       "patphone": 9876546789,
       "appointmentDate": "2023-06-28",
       "id": 8
-    },
-    {
-      "docfirstname": "Prabir",
-      "doclastname": "Biswas",
-      "docregd": 123456,
-      "docspecialization": "General Medicine",
-      "docqualification": "MD (General Medicine)",
-      "docphone": 987656789,
-      "docemail": "prabir.biswas@gmail.com",
-      "clinicname": "TKBM Doctors Chamber",
-      "cliniccity": "Kolkata",
-      "clinicaddress": "Netaji Nagar",
-      "doctime": "16:00",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "appointmentDate": "2023-06-23",
-      "id": 9
     }
   ]
 }

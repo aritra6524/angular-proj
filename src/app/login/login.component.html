@@ -1,75 +1,100 @@
 <html class="vh-100">
-    <div class="card p-3 col-md-8 col-lg-6 mt-5 mx-auto">
+  <div class="card p-3 col-md-8 col-lg-6 mt-5 mx-auto">
+    <h1 class="mb-4">Login</h1>
 
-        <h1 class="mb-4">Login</h1>
-        
-        <div class="d-flex mb-4">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="radio-btn"
-              id="radio-btn-doctor"
-              (change)="setProfile('Doctor')"
-            />
-            <label class="form-check-label" for="radio-btn-doctor">
-              Doctor
-            </label>
-          </div>
-          <div class="form-check ms-4">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="radio-btn"
-              id="radio-btn-patient"
-              [checked]="true"
-              (change)="setProfile('Patient')"
-            />
-            <label class="form-check-label" for="radio-btn-patient">
-              Patient
-            </label>
-          </div>
-        </div>
-
-        <form *ngIf="profileType == 'Patient'" [formGroup]="loginPatForm" (ngSubmit)="onPatLogin()">
-          Hey Pat
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" id="email" class="form-control" formControlName="patemail"/>
-            <label class="form-label" for="email">Email address</label>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input type="password" id="password" class="form-control" formControlName="patpassword"/>
-            <label class="form-label" for="password">Password</label>
-          </div>
-
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-block mb-4">
-            Sign in
-          </button>
-        </form>
-
-        <form *ngIf="profileType == 'Doctor'" [formGroup]="loginDocForm" (ngSubmit)="onDocLogin()">
-          Hey Doc
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" id="email" class="form-control" formControlName="docemail"/>
-            <label class="form-label" for="email">Email address</label>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input type="password" id="password" class="form-control" formControlName="docpassword"/>
-            <label class="form-label" for="password">Password</label>
-          </div>
-
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-block mb-4">
-            Sign in
-          </button>
-        </form>
-
+    <div class="d-flex mb-4">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="radio-btn"
+          id="radio-btn-doctor"
+          (change)="setProfile('Doctor')"
+        />
+        <label class="form-check-label" for="radio-btn-doctor"> Doctor </label>
+      </div>
+      <div class="form-check ms-4">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="radio-btn"
+          id="radio-btn-patient"
+          [checked]="true"
+          (change)="setProfile('Patient')"
+        />
+        <label class="form-check-label" for="radio-btn-patient">
+          Patient
+        </label>
+      </div>
     </div>
+
+    <form
+      *ngIf="profileType == 'Patient'"
+      [formGroup]="loginPatForm"
+      (ngSubmit)="onPatLogin()"
+    >
+      Hey Pat
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="patemail"
+        />
+        <label class="form-label" for="email">Email address</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="patpassword"
+        />
+        <label class="form-label" for="password">Password</label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">
+        Login
+      </button>
+    </form>
+
+    <form
+      *ngIf="profileType == 'Doctor'"
+      [formGroup]="loginDocForm"
+      (ngSubmit)="onDocLogin()"
+    >
+      Hey Doc
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="docemail"
+        />
+        <label class="form-label" for="email">Email address</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="docpassword"
+        />
+        <label class="form-label" for="password">Password</label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">
+        Login
+      </button>
+    </form>
+    <a class="text-muted" (click)="onAdminLogin()">Login as Admin?</a>
+  </div>
 </html>

@@ -41,7 +41,10 @@ export class LoginComponent {
             this.serviceObj.setPatientLoginStatus(true);
             this.serviceObj.setCurrentPatient(response[0]);
             //navigate to dashboard
-            this.router.navigate(['/dashboard/doctor-list',patientCredObj.patemail]);
+            this.router.navigate([
+              '/dashboard/doctor-list',
+              patientCredObj.patemail,
+            ]);
           } else {
             alert('Invalid Password');
           }
@@ -63,7 +66,10 @@ export class LoginComponent {
             this.serviceObj.setDoctorLoginStatus(true);
             this.serviceObj.setCurrentDoctor(response[0]);
             //navigate to dashboard
-            this.router.navigate(['/dashboard/patient-list',doctorCredObj.docemail]);
+            this.router.navigate([
+              '/dashboard/patient-list',
+              doctorCredObj.docemail,
+            ]);
           } else {
             alert('Invalid Password');
           }
@@ -74,4 +80,6 @@ export class LoginComponent {
       },
     });
   }
+
+  onAdminLogin(): void {}
 }
