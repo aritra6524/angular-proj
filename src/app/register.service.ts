@@ -12,12 +12,15 @@ export class RegisterService {
 
   constructor(private hC: HttpClient) {}
 
+  adminLoginStatus: boolean = false;
+
   patientLoginStatus: boolean = false;
   currentPatient: Patient = null;
 
   doctorLoginStatus: boolean = false;
   currentDoctor: Doctor = null;
 
+  adminLoginStatusBehaviorSubject = new BehaviorSubject(this.adminLoginStatus);
   patientLoginStatusBehaviorSubject = new BehaviorSubject(
     this.patientLoginStatus
   );
@@ -27,6 +30,16 @@ export class RegisterService {
     this.doctorLoginStatus
   );
   currentDoctorBehaviorSubject = new BehaviorSubject(this.currentDoctor);
+
+  //update Admin Login status
+  setAdminLoginStatus(status) {
+    this.adminLoginStatusBehaviorSubject.next(status);
+  }
+
+  //get Admin Login Status
+  getAdminLoginStatus() {
+    return this.adminLoginStatusBehaviorSubject.asObservable();
+  }
 
   //update Login status
   setDoctorLoginStatus(status) {
@@ -104,6 +117,12 @@ export class RegisterService {
       `http://localhost:3000/doctor?docemail=${emailid}`
     );
   }
+
+  getuserCredAdmin(emailid) {
+    return this.hC.get<Admin[]>(
+      `https://localhost:3000/admin?adminemail=${emailid}`
+    );
+  }
 }
 
 export interface Patient {
@@ -134,4 +153,9 @@ export interface Doctor {
   fri: boolean;
   sat: boolean;
   sun: boolean;
+}
+
+export interface Admin {
+  adminemail: string;
+  adminpassword: string;
 }

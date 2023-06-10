@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
     this.userObj.setCurrentPatient(null);
     this.userObj.setDoctorLoginStatus(false);
     this.userObj.setCurrentDoctor(null);
+    this.userObj.setAdminLoginStatus(false);
     this.router.navigate(['login']);
   }
 }

@@ -2,7 +2,7 @@
   <div class="card p-3 col-md-8 col-lg-6 mt-5 mx-auto">
     <h1 class="mb-4">Login</h1>
 
-    <div class="d-flex mb-4">
+    <div class="d-flex mb-4" *ngIf="profileType != 'Admin'">
       <div class="form-check">
         <input
           class="form-check-input"
@@ -33,7 +33,7 @@
       [formGroup]="loginPatForm"
       (ngSubmit)="onPatLogin()"
     >
-      Hey Pat
+      <p class="text-muted">Logging in as Patient</p>
       <!-- Email input -->
       <div class="form-outline mb-4">
         <input
@@ -67,7 +67,7 @@
       [formGroup]="loginDocForm"
       (ngSubmit)="onDocLogin()"
     >
-      Hey Doc
+      <p class="text-muted">Logging in as Doctor</p>
       <!-- Email input -->
       <div class="form-outline mb-4">
         <input
@@ -95,6 +95,51 @@
         Login
       </button>
     </form>
-    <a class="text-muted" (click)="onAdminLogin()">Login as Admin?</a>
+
+    <form
+      *ngIf="profileType == 'Admin'"
+      [formGroup]="loginAdminForm"
+      (ngSubmit)="onAdminLogin()"
+    >
+      <p class="text-muted">Logging in as Admin</p>
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="adminemail"
+        />
+        <label class="form-label" for="email">Email address</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="adminpassword"
+        />
+        <label class="form-label" for="password">Password</label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">
+        Login
+      </button>
+    </form>
+    <a
+      class="text-muted"
+      (click)="setProfile('Admin')"
+      *ngIf="profileType != 'Admin'"
+      >Login as Admin?</a
+    >
+    <a
+      class="text-muted"
+      (click)="setProfile('Patient')"
+      *ngIf="profileType == 'Admin'"
+      >Login as Doctor/Patient?</a
+    >
   </div>
 </html>

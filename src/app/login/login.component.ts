@@ -11,6 +11,7 @@ import { RegisterService } from '../register.service';
 export class LoginComponent {
   loginPatForm: FormGroup;
   loginDocForm: FormGroup;
+  loginAdminForm: FormGroup;
   status: boolean;
   profileType: string = 'Patient';
 
@@ -24,6 +25,10 @@ export class LoginComponent {
     this.loginDocForm = new FormGroup({
       docemail: new FormControl(null),
       docpassword: new FormControl(null),
+    });
+    this.loginAdminForm = new FormGroup({
+      adminemail: new FormControl(null),
+      adminpassword: new FormControl(null),
     });
   }
 
@@ -48,6 +53,8 @@ export class LoginComponent {
           } else {
             alert('Invalid Password');
           }
+        } else {
+          alert('Invalid! Patient Not Found');
         }
       },
       error: (err) => {
@@ -73,6 +80,8 @@ export class LoginComponent {
           } else {
             alert('Invalid Password');
           }
+        } else {
+          alert('Invalid! Doctor Not Found');
         }
       },
       error: (err) => {
@@ -81,5 +90,27 @@ export class LoginComponent {
     });
   }
 
-  onAdminLogin(): void {}
+  onAdminLogin(): void {
+    const adminCredObj = this.loginAdminForm.value;
+    // console.log(adminCredObj);
+    this.serviceObj.getuserCredAdmin(adminCredObj.adminemail).subscribe({
+      next: (response) => {
+        if (response.length != 0) {
+          if (adminCredObj.adminpassword == response[0].adminpassword) {
+            //update global state
+            this.serviceObj.setAdminLoginStatus(true);
+            //navigate to dashboard
+            this.router.navigate(['/dashboard/doctor-list']);
+          } else {
+            alert('Invalid Password');
+          }
+        } else {
+          alert('Invalid Username');
+        }
+      },
+      error: (err) => {
+        console.log('Error occurred:', err);
+      },
+    });
+  }
 }
