@@ -6,49 +6,29 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RegisterService {
-  private loginStatus: boolean = false;
-  private loginCredentials: Patient = null;
-  private profileStatus: string = '';
-
   constructor(private hC: HttpClient) {}
 
-  adminLoginStatus: boolean = false;
+  loginStatus: boolean = false;
 
-  patientLoginStatus: boolean = false;
+  // patientLoginStatus: boolean = false;
   currentPatient: Patient = null;
 
-  doctorLoginStatus: boolean = false;
+  // doctorLoginStatus: boolean = false;
   currentDoctor: Doctor = null;
 
-  adminLoginStatusBehaviorSubject = new BehaviorSubject(this.adminLoginStatus);
-  patientLoginStatusBehaviorSubject = new BehaviorSubject(
-    this.patientLoginStatus
-  );
-  currentPatientBehaviorSubject = new BehaviorSubject(this.currentPatient);
+  loginStatusBehaviorSubject = new BehaviorSubject(this.loginStatus);
 
-  doctorLoginStatusBehaviorSubject = new BehaviorSubject(
-    this.doctorLoginStatus
-  );
+  currentPatientBehaviorSubject = new BehaviorSubject(this.currentPatient);
   currentDoctorBehaviorSubject = new BehaviorSubject(this.currentDoctor);
 
   //update Admin Login status
-  setAdminLoginStatus(status) {
-    this.adminLoginStatusBehaviorSubject.next(status);
+  setLoginStatus(status) {
+    this.loginStatusBehaviorSubject.next(status);
   }
 
   //get Admin Login Status
-  getAdminLoginStatus() {
-    return this.adminLoginStatusBehaviorSubject.asObservable();
-  }
-
-  //update Login status
-  setDoctorLoginStatus(status) {
-    this.doctorLoginStatusBehaviorSubject.next(status);
-  }
-
-  //get Login status
-  getDoctorLoginStatus() {
-    return this.doctorLoginStatusBehaviorSubject.asObservable();
+  getLoginStatus() {
+    return this.loginStatusBehaviorSubject.asObservable();
   }
 
   //update current user
@@ -61,16 +41,6 @@ export class RegisterService {
     return this.currentDoctorBehaviorSubject.asObservable();
   }
 
-  //update Login status
-  setPatientLoginStatus(status) {
-    this.patientLoginStatusBehaviorSubject.next(status);
-  }
-
-  //get Login status
-  getPatientLoginStatus() {
-    return this.patientLoginStatusBehaviorSubject.asObservable();
-  }
-
   //update current user
   setCurrentPatient(userObj) {
     this.currentPatientBehaviorSubject.next(userObj);
@@ -80,23 +50,6 @@ export class RegisterService {
   getCurrentPatient() {
     return this.currentPatientBehaviorSubject.asObservable();
   }
-
-  // loginStatusBS = new BehaviorSubject(this.loginStatus);
-  // loginCredentialsBS = new BehaviorSubject(this.loginCredentials);
-  // profilestatusBS = new BehaviorSubject(this.profileStatus);
-
-  // setLoginStatus(status) {
-  //   return this.loginStatusBS.next(status);
-  // }
-
-  // setLoginCredential(credentials) {
-  //   this.loginCredentials = credentials;
-  //   this.loginCredentialsBS.next(credentials);
-  // }
-
-  // getLoginCredential() {
-  //   return this.loginCredentialsBS.asObservable();
-  // }
 
   registerDoctor(docDetails: any) {
     return this.hC.post('http://localhost:3000/doctor', docDetails);
@@ -118,9 +71,9 @@ export class RegisterService {
     );
   }
 
-  getuserCredAdmin(emailid) {
+  getuserCredAdmin(username) {
     return this.hC.get<Admin[]>(
-      `http://localhost:3000/admin?adminemail=${emailid}`
+      `http://localhost:3000/admin?username=${username}`
     );
   }
 }
@@ -156,6 +109,6 @@ export interface Doctor {
 }
 
 export interface Admin {
-  adminemail: string;
-  adminpassword: string;
+  username: string;
+  password: string;
 }

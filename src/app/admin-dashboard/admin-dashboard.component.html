@@ -1,0 +1,30 @@
+<!-- <app-doctor-list></app-doctor-list> -->
+
+<div *ngFor="let doctor of doctors">
+  <div class="card">
+    <td>Dr. {{ doctor.docfirstname }} {{ doctor.doclastname }}</td>
+    <td>{{ doctor.docregd }}</td>
+    <td>{{ doctor.docspecialization }}</td>
+    <td>{{ doctor.docqualification }}</td>
+    <td>{{ doctor.docphone }}</td>
+    <td>{{ doctor.docemail }}</td>
+    <td>{{ doctor.clinicname }}</td>
+    <td>{{ doctor.cliniccity }}</td>
+    <td>{{ doctor.clinicaddress }}</td>
+    <td>{{ doctor.doctime }}</td>
+    <td>
+      <a *ngIf="doctor.mon == true">Mon </a>
+      <a *ngIf="doctor.tues == true">Tues </a>
+      <a *ngIf="doctor.wed == true">Wed </a>
+      <a *ngIf="doctor.thurs == true">Thurs </a>
+      <a *ngIf="doctor.fri == true">Fri </a>
+      <a *ngIf="doctor.sat == true">Sat </a>
+      <a *ngIf="doctor.sun == true">Sun </a>
+    </td>
+    <td>
+      <button class="btn btn-danger" (click)="onClickDeleteDoctor(doctor)">
+        X
+      </button>
+    </td>
+  </div>
+</div>
