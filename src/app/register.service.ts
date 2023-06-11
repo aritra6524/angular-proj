@@ -120,7 +120,7 @@ export class RegisterService {
 
   getuserCredAdmin(emailid) {
     return this.hC.get<Admin[]>(
-      `https://localhost:3000/admin?adminemail=${emailid}`
+      `http://localhost:3000/admin?adminemail=${emailid}`
     );
   }
 }

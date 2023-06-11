@@ -335,8 +335,9 @@
   ],
   "admin": [
     {
-      "adminusername": "admin",
-      "adminpassword": "admin"
+      "adminemail": "admin",
+      "adminpassword": "admin",
+      "id": 1
     }
   ]
 }

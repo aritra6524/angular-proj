@@ -100,7 +100,7 @@ export class LoginComponent {
             //update global state
             this.serviceObj.setAdminLoginStatus(true);
             //navigate to dashboard
-            this.router.navigate(['/dashboard/doctor-list']);
+            this.router.navigate(['/dashboard']);
           } else {
             alert('Invalid Password');
           }
