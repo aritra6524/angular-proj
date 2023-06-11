@@ -1,45 +1,63 @@
-<div class="appointment-page">
-  <div class="row">
-    <div class="d-flex">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">
-            Dr. {{ selectedDoctor.docfirstname }}
-            {{ selectedDoctor.doclastname }}
-          </h5>
-          <p class="card-text">
-            {{ selectedDoctor.docspecialization }}
-          </p>
-          <p class="card-text">
-            {{ selectedDoctor.docemail }}
-          </p>
-          <p class="card-text">
-            {{ selectedDoctor.clinicname }}
-          </p>
-          <p class="card-text">
-            {{ selectedDoctor.clinicaddress }}
-          </p>
-          <p class="card-text">
-            {{ selectedDoctor.cliniccity }}
-          </p>
-
-          <p *ngIf="selectedDoctor.mon == true">Monday</p>
-          <p *ngIf="selectedDoctor.tues == true">Tuesday</p>
-          <p *ngIf="selectedDoctor.wed == true">Wednesday</p>
-          <p *ngIf="selectedDoctor.thurs == true">Thursday</p>
-          <p *ngIf="selectedDoctor.fri == true">Friday</p>
-          <p *ngIf="selectedDoctor.sat == true">Saturday</p>
-          <p *ngIf="selectedDoctor.sun == true">Sunday</p>
-
-          <p class="card-text">
-            {{ selectedDoctor.doctime }}
-          </p>
-        </div>
+<div class="appointment-page d-flex">
+  <div class="card col-sm-6 mx-auto">
+    <div class="card-body">
+      <div class="d-flex">
+        <p class="text-muted">Doctor's Name:</p>
+        <p class="card-text">
+          Dr. {{ selectedDoctor.docfirstname }}
+          {{ selectedDoctor.doclastname }}
+        </p>
+      </div>
+      <div class="d-flex">
+        <p class="text-muted">Specialization:</p>
+        <p class="card-text">
+          {{ selectedDoctor.docspecialization }}
+        </p>
+      </div>
+      <div class="d-flex">
+        <p class="text-muted">Email ID:</p>
+        <p class="card-text">{{ selectedDoctor.docemail }}</p>
+      </div>
+      <div class="d-flex">
+        <p class="text-muted">Clinic's Name:</p>
+        <p class="card-text">
+          {{ selectedDoctor.clinicname }}
+        </p>
+      </div>
+      <div class="d-flex">
+        <p class="text-muted">Clinic Address:</p>
+        <p class="card-text">
+          {{ selectedDoctor.clinicaddress }}
+        </p>
+      </div>
+      <div class="d-flex">
+        <p class="text-muted">Clinic City:</p>
+        <p class="card-text">{{ selectedDoctor.cliniccity }}</p>
+      </div>
+      <div class="d-flex">
+        <p class="text-muted">Available Days:</p>
+        <p *ngIf="selectedDoctor.mon == true">Monday</p>
+        <p *ngIf="selectedDoctor.tues == true">Tuesday</p>
+        <p *ngIf="selectedDoctor.wed == true">Wednesday</p>
+        <p *ngIf="selectedDoctor.thurs == true">Thursday</p>
+        <p *ngIf="selectedDoctor.fri == true">Friday</p>
+        <p *ngIf="selectedDoctor.sat == true">Saturday</p>
+        <p *ngIf="selectedDoctor.sun == true">Sunday</p>
+      </div>
+      <br />
+      <div class="">
+        <p class="text-muted">Appointment Time:</p>
+        <h3 class="card-text">{{ selectedDoctor.doctime }} hrs.</h3>
       </div>
     </div>
   </div>
-  <form [formGroup]="appointmentForm" (ngSubmit)="bookAppointment()">
-    <input type="date" formControlName="date" />
-    <button type="submit">Book Appointment</button>
-  </form>
+  <div class="card col-sm-5 p-5 m-auto" style="background-color: bisque">
+    <form [formGroup]="appointmentForm" (ngSubmit)="bookAppointment()">
+      <b>Appointment Time:</b><br /><br />
+      <input type="date" formControlName="date" class="m-auto" /><br /><br />
+      <button type="submit" class="btn btn-success m-auto">
+        Book Appointment
+      </button>
+    </form>
+  </div>
 </div>

@@ -5,6 +5,7 @@ import { AppointmentService } from '../appointment.service';
 import { RegisterService } from '../register.service';
 import { FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 
 interface Doctor {
   docfirstname: string;
