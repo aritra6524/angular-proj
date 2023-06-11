@@ -1,8 +1,6 @@
-<p>book-appointment-page works!</p>
-
 <div class="appointment-page">
   <div class="row">
-    <div class="col-sm-6 d-flex">
+    <div class="d-flex">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">
@@ -13,22 +11,16 @@
             {{ selectedDoctor.docspecialization }}
           </p>
           <p class="card-text">
-            {{ selectedDoctor.docphone }}
-          </p>
-          <p class="card-text">
             {{ selectedDoctor.docemail }}
-          </p>
-          <p class="card-text">
-            {{ selectedDoctor.docpassword }}
           </p>
           <p class="card-text">
             {{ selectedDoctor.clinicname }}
           </p>
           <p class="card-text">
-            {{ selectedDoctor.cliniccity }}
+            {{ selectedDoctor.clinicaddress }}
           </p>
           <p class="card-text">
-            {{ selectedDoctor.clinicaddress }}
+            {{ selectedDoctor.cliniccity }}
           </p>
 
           <p *ngIf="selectedDoctor.mon == true">Monday</p>
@@ -41,20 +33,6 @@
 
           <p class="card-text">
             {{ selectedDoctor.doctime }}
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">
-            {{ selectedPatient.patfirstname }}
-            {{ selectedPatient.patlastname }}
-          </h5>
-          <p class="card-text">
-            {{ selectedPatient.patemail }}
-          </p>
-          <p class="card-text">
-            {{ selectedPatient.patphone }}
           </p>
         </div>
       </div>

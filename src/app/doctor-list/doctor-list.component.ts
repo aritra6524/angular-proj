@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AppointmentService } from '../appointment.service';
 import { RegisterService } from '../register.service';
 import { FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
 
 interface Doctor {
   docfirstname: string;
@@ -34,11 +35,35 @@ interface Appointment {
   cliniccity: string;
   clinicaddress: string;
   doctime: string;
+  patfirstname: string;
+  patlastname: string;
+  patphone: number;
+  patemail: string;
+  appointmentDate: string;
+}
+
+interface Result {
+  docfirstname: string;
+  doclastname: string;
+  docregd: string;
+  docspecialization: string;
+  docqualification: string;
+  clinicname: string;
+  cliniccity: string;
+  clinicaddress: string;
+  doctime: string;
+  patfirstname: string;
+  patlastname: string;
+  patphone: number;
+  patemail: string;
   appointmentDate: string;
 }
 
 interface Patient {
-  emailid: string;
+  patfirstname: string;
+  patlastname: string;
+  patphone: number;
+  patemail: string;
 }
 
 @Component({
@@ -49,20 +74,23 @@ interface Patient {
 export class DoctorListComponent implements OnInit {
   docForm: FormGroup;
 
+  selectedPatient: Patient;
   doctors: Doctor[] = [];
   appointments: Appointment[] = [];
-  patient: Patient;
+  results: Result[] = [];
+  apptfilters: Result[] = [];
 
   constructor(
     private hC: HttpClient,
     private router: Router,
-    private serviceObj: AppointmentService,
-    private registerServiceObj: RegisterService
+    private appointmentServiceObj: AppointmentService,
+    private registerServiceObj: RegisterService,
+    private location: Location
   ) {}
 
   ngOnInit() {
     this.fetchDoctors();
-    // this.fetchAppointments(patient);
+    this.fetchAppointments();
   }
 
   fetchDoctors() {
@@ -77,23 +105,39 @@ export class DoctorListComponent implements OnInit {
   }
 
   toAppointmentPage(doctor) {
-    this.serviceObj.setDoctorDetails(doctor);
+    this.appointmentServiceObj.setDoctorDetails(doctor);
     this.router.navigate(['/dashboard/book-appointment-page']);
   }
 
-  // fetchAppointments(patient) {
-  //   console.log(this.registerServiceObj.getuserCredPat(patient.patemail));
-  // this.hC
-  //   .get<Appointment[]>(
-  //     `http://localhost:3000/appointment?patemail=${patient.patemail}`
-  //   )
-  //   .subscribe(
-  //     (data) => {
-  //       this.appointments = data;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching appointments:', error);
-  //     }
-  //   );
-  // }
+  fetchAppointments() {
+    this.registerServiceObj.getCurrentPatient().subscribe({
+      next: (data) => {
+        this.selectedPatient = data;
+      },
+      error: (error) => {
+        console.error('Error fetching patients:', error);
+      },
+    });
+
+    this.hC.get<Appointment[]>('http://localhost:3000/appointment').subscribe(
+      (data) => {
+        this.appointments = data;
+        this.apptfilters = this.appointments.filter(
+          (element) => element.patemail == this.selectedPatient.patemail
+        );
+      },
+      (error) => {
+        console.error('Error fetching doctors:', error);
+      }
+    );
+  }
+
+  onClickCancelAppointment(result: any) {
+    this.appointmentServiceObj.cancelAppointment(result);
+    this.router
+      .navigateByUrl('/dashboard', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate([decodeURI(this.location.path())]);
+      });
+  }
 }

@@ -1,27 +1,42 @@
-<!-- <div>
-  <h2>Appointments</h2>
+<div class="appointment-list" *ngIf="apptfilters.length != 0">
+  <h2>Your Appointments</h2>
   <div class="row">
-    <div class="my-3" *ngFor="let appointment of appointments">
+    <div class="col-sm-6 my-3" *ngFor="let apptfilter of apptfilters">
       <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">
-            Dr. {{ appointment.docfirstname }} {{ appointment.doclastname }}
-          </h5>
-          <p class="card-text">
-            {{ appointment.docspecialization }}
-          </p>
-          <p class="card-text">
-            {{ appointment.docqualification }}
-          </p>
-          <p class="card-text">
-            {{ appointment.cliniccity }}
-          </p>
-          <a class="btn btn-danger">Cancel Appointment</a>
+        <div class="card-body d-flex">
+          <div class="doctor-details m-auto">
+            <h5 class="card-title">
+              Dr. {{ apptfilter.docfirstname }} {{ apptfilter.doclastname }}
+            </h5>
+            <p class="card-text">
+              {{ apptfilter.docspecialization }}<br />
+              {{ apptfilter.docqualification }}
+            </p>
+          </div>
+          <div class="clinic-details m-auto">
+            <p class="card-text">
+              {{ apptfilter.clinicname }}<br />
+              {{ apptfilter.clinicaddress }}<br />
+              {{ apptfilter.cliniccity }}
+            </p>
+          </div>
+          <div class="appointment-details m-auto">
+            <h5 class="card-title">
+              {{ apptfilter.doctime }} hrs<br />
+              {{ apptfilter.appointmentDate }}
+            </h5>
+          </div>
+
+          <a
+            class="btn btn-danger m-auto"
+            (click)="onClickCancelAppointment(apptfilter)"
+            >Cancel</a
+          >
         </div>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <div class="doctor-list">
   <h2>List of Doctors</h2>

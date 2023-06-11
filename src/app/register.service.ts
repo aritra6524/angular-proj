@@ -31,22 +31,22 @@ export class RegisterService {
     return this.loginStatusBehaviorSubject.asObservable();
   }
 
-  //update current user
+  //update current doctor
   setCurrentDoctor(userObj) {
     return this.currentDoctorBehaviorSubject.next(userObj);
   }
 
-  //get current user
+  //get current doctor
   getCurrentDoctor() {
     return this.currentDoctorBehaviorSubject.asObservable();
   }
 
-  //update current user
+  //update current patient
   setCurrentPatient(userObj) {
     this.currentPatientBehaviorSubject.next(userObj);
   }
 
-  //get current user
+  //get current patient
   getCurrentPatient() {
     return this.currentPatientBehaviorSubject.asObservable();
   }
