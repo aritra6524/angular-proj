@@ -120,231 +120,242 @@
       *ngIf="profileType == 'Doctor'"
       [formGroup]="registerDocForm"
       (ngSubmit)="onDocFormSubmit()"
+      style="overflow: scroll; height: 500px"
     >
-      <div>
-        <span>Dr.</span>
-        <!--Name input-->
-        <div class="mb-3 d-flex">
-          <div class="form-outline w-50 me-3">
+      <div style="width: 98%">
+        <div>
+          <span>Dr.</span>
+          <!--Name input-->
+          <div class="mb-3 d-flex">
+            <div class="form-outline w-50 me-3">
+              <input
+                type="text"
+                id="first-name"
+                class="form-control"
+                formControlName="docfirstname"
+              />
+              <label class="form-label" for="first-name">First Name</label>
+            </div>
+            <div class="form-outline w-50">
+              <input
+                type="text"
+                id="last-name"
+                class="form-control"
+                formControlName="doclastname"
+              />
+              <label class="form-label" for="last-name">Last Name</label>
+            </div>
+          </div>
+
+          <!--Registration Number input-->
+          <div class="form-outline mb-3">
+            <input
+              type="number"
+              id="regd-number"
+              class="form-control"
+              formControlName="docregd"
+            />
+            <label class="form-label" for="regd-number"
+              >Doctor's Registration Number</label
+            >
+          </div>
+
+          <!--Specialization input-->
+          <div class="form-outline mb-3">
+            <select
+              name="specialization"
+              id="specialization"
+              class="form-control"
+              formControlName="docspecialization"
+            >
+              <option value="General Medicine">General Medicine</option>
+              <option value="General Surgery">General Surgery</option>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Diabetology">Diabetology</option>
+              <option value="Orthopedic">Orthopedic</option>
+              <option value="Dermatology">Dermatology</option>
+              <option value="Neurology">Neurology</option>
+            </select>
+            <label class="form-label" for="specialization"
+              >Specialization</label
+            >
+          </div>
+
+          <!--Doctor Qualification input-->
+          <div class="form-outline mb-3">
             <input
               type="text"
-              id="first-name"
+              id="qualification"
               class="form-control"
-              formControlName="docfirstname"
+              formControlName="docqualification"
             />
-            <label class="form-label" for="first-name">First Name</label>
+            <label class="form-label" for="qualification">Qualification</label>
           </div>
-          <div class="form-outline w-50">
+
+          <!-- Doctor's Phone Number input -->
+          <div class="form-outline mb-3">
             <input
-              type="text"
-              id="last-name"
+              type="number"
+              id="phone-number"
               class="form-control"
-              formControlName="doclastname"
+              formControlName="docphone"
             />
-            <label class="form-label" for="last-name">Last Name</label>
+            <label class="form-label" for="phone-number">Phone Number</label>
           </div>
-        </div>
 
-        <!--Registration Number input-->
-        <div class="form-outline mb-3">
-          <input
-            type="number"
-            id="regd-number"
-            class="form-control"
-            formControlName="docregd"
-          />
-          <label class="form-label" for="regd-number"
-            >Doctor's Registration Number</label
-          >
-        </div>
+          <!-- Email input -->
+          <div class="form-outline mb-3">
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="docemail"
+            />
+            <label class="form-label" for="email">Email address</label>
+          </div>
 
-        <!--Specialization input-->
-        <div class="form-outline mb-3">
-          <select
-            name="specialization"
-            id="specialization"
-            class="form-control"
-            formControlName="docspecialization"
-          >
-            <option value="General Medicine">General Medicine</option>
-            <option value="General Surgery">General Surgery</option>
-            <option value="Cardiology">Cardiology</option>
-            <option value="Diabetology">Diabetology</option>
-            <option value="Orthopedic">Orthopedic</option>
-            <option value="Dermatology">Dermatology</option>
-            <option value="Neurology">Neurology</option>
-          </select>
-          <label class="form-label" for="specialization">Specialization</label>
-        </div>
-
-        <!--Doctor Qualification input-->
-        <div class="form-outline mb-3">
-          <input
-            type="text"
-            id="qualification"
-            class="form-control"
-            formControlName="docqualification"
-          />
-          <label class="form-label" for="qualification">Qualification</label>
-        </div>
-
-        <!-- Doctor's Phone Number input -->
-        <div class="form-outline mb-3">
-          <input
-            type="number"
-            id="phone-number"
-            class="form-control"
-            formControlName="docphone"
-          />
-          <label class="form-label" for="phone-number">Phone Number</label>
-        </div>
-
-        <!-- Email input -->
-        <div class="form-outline mb-3">
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            formControlName="docemail"
-          />
-          <label class="form-label" for="email">Email address</label>
-        </div>
-
-        <!-- Password input -->
-        <div class="form-outline mb-3">
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            formControlName="docpassword"
-          />
-          <label class="form-label" for="password">New Password</label>
-        </div>
-        <!-- <div class="form-outline mb-3">
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              formControlName="docpassword"
+            />
+            <label class="form-label" for="password">New Password</label>
+          </div>
+          <!-- <div class="form-outline mb-3">
           <input type="password" id="password" class="form-control" />
           <label class="form-label text-muted" for="password"
             >Re-enter Password</label
           >
         </div> -->
 
-        <!--Clinic Details-->
-        <div class="form-outline mb-3">
-          <input
-            type="text"
-            id="clinic-name"
-            class="form-control"
-            formControlName="clinicname"
-          />
-          <label class="form-label" for="clinic-name">Clinic Name</label>
-        </div>
-        <div class="form-outline mb-3">
-          <input
-            type="text"
-            id="clinic-city"
-            class="form-control"
-            formControlName="cliniccity"
-          />
-          <label class="form-label" for="clinic-city">Clinic City</label>
-        </div>
-        <div class="form-outline mb-3">
-          <input
-            type="text"
-            id="clinic-address"
-            class="form-control"
-            formControlName="clinicaddress"
-          />
-          <label class="form-label" for="clinic-address">Clinic Address</label>
-        </div>
+          <!--Clinic Details-->
+          <div class="form-outline mb-3">
+            <input
+              type="text"
+              id="clinic-name"
+              class="form-control"
+              formControlName="clinicname"
+            />
+            <label class="form-label" for="clinic-name">Clinic Name</label>
+          </div>
+          <div class="form-outline mb-3">
+            <input
+              type="text"
+              id="clinic-city"
+              class="form-control"
+              formControlName="cliniccity"
+            />
+            <label class="form-label" for="clinic-city">Clinic City</label>
+          </div>
+          <div class="form-outline mb-3">
+            <input
+              type="text"
+              id="clinic-address"
+              class="form-control"
+              formControlName="clinicaddress"
+            />
+            <label class="form-label" for="clinic-address"
+              >Clinic Address</label
+            >
+          </div>
 
-        <!--Business Hours-->
-        <div class="form-outline mb-3">
-          <input
-            type="time"
-            id="doc-time"
-            class="form-control"
-            formControlName="doctime"
-          />
-          <label class="form-label" for="doc-time">Business Time</label>
-        </div>
+          <!--Business Hours-->
+          <div class="form-outline mb-3">
+            <input
+              type="time"
+              id="doc-time"
+              class="form-control"
+              formControlName="doctime"
+            />
+            <label class="form-label" for="doc-time">Business Time</label>
+          </div>
 
-        <!--Checkboxes-->
-        <div class="form-group checkbox mb-4" id="business-days">
-          <div class="ms-3 form-group">
-            <div class="row">
-              <div class="col-sm-3 form-check">
-                <input
-                  type="checkbox"
-                  id="mon-chk"
-                  class="form-check-input"
-                  formControlName="mon"
-                />
-                <label for="mon-chk" class="form-check-label">Monday</label>
-              </div>
-              <div class="col-sm-3 form-check">
-                <input
-                  type="checkbox"
-                  id="tues-chk"
-                  class="form-check-input"
-                  formControlName="tues"
-                />
-                <label for="tues-chk" class="form-check-label">Tuesday</label>
-              </div>
-              <div class="col-sm-3 form-check">
-                <input
-                  type="checkbox"
-                  id="wed-chk"
-                  class="form-check-input"
-                  formControlName="wed"
-                />
-                <label for="wed-chk" class="form-check-label">Wednesday</label>
-              </div>
-              <div class="col-sm-3 form-check">
-                <input
-                  type="checkbox"
-                  id="thurs-chk"
-                  class="form-check-input"
-                  formControlName="thurs"
-                />
-                <label for="thurs-chk" class="form-check-label">Thursday</label>
-              </div>
-              <div class="col-sm-3 form-check">
-                <input
-                  type="checkbox"
-                  id="fri-chk"
-                  class="form-check-input"
-                  formControlName="fri"
-                />
-                <label for="fri-chk" class="form-check-label">Friday</label>
-              </div>
-              <div class="col-sm-3 form-check">
-                <input
-                  type="checkbox"
-                  id="sat-chk"
-                  class="form-check-input"
-                  formControlName="sat"
-                />
-                <label for="sat-chk" class="form-check-label">Saturday</label>
-              </div>
-              <div class="col-sm-3 form-check">
-                <input
-                  type="checkbox"
-                  id="sun-chk"
-                  class="form-check-input"
-                  formControlName="sun"
-                />
-                <label for="sun-chk" class="form-check-label">Sunday</label>
+          <!--Checkboxes-->
+          <div class="form-group checkbox mb-4" id="business-days">
+            <div class="ms-3 form-group">
+              <div class="row">
+                <div class="col-sm-3 form-check">
+                  <input
+                    type="checkbox"
+                    id="mon-chk"
+                    class="form-check-input"
+                    formControlName="mon"
+                  />
+                  <label for="mon-chk" class="form-check-label">Monday</label>
+                </div>
+                <div class="col-sm-3 form-check">
+                  <input
+                    type="checkbox"
+                    id="tues-chk"
+                    class="form-check-input"
+                    formControlName="tues"
+                  />
+                  <label for="tues-chk" class="form-check-label">Tuesday</label>
+                </div>
+                <div class="col-sm-3 form-check">
+                  <input
+                    type="checkbox"
+                    id="wed-chk"
+                    class="form-check-input"
+                    formControlName="wed"
+                  />
+                  <label for="wed-chk" class="form-check-label"
+                    >Wednesday</label
+                  >
+                </div>
+                <div class="col-sm-3 form-check">
+                  <input
+                    type="checkbox"
+                    id="thurs-chk"
+                    class="form-check-input"
+                    formControlName="thurs"
+                  />
+                  <label for="thurs-chk" class="form-check-label"
+                    >Thursday</label
+                  >
+                </div>
+                <div class="col-sm-3 form-check">
+                  <input
+                    type="checkbox"
+                    id="fri-chk"
+                    class="form-check-input"
+                    formControlName="fri"
+                  />
+                  <label for="fri-chk" class="form-check-label">Friday</label>
+                </div>
+                <div class="col-sm-3 form-check">
+                  <input
+                    type="checkbox"
+                    id="sat-chk"
+                    class="form-check-input"
+                    formControlName="sat"
+                  />
+                  <label for="sat-chk" class="form-check-label">Saturday</label>
+                </div>
+                <div class="col-sm-3 form-check">
+                  <input
+                    type="checkbox"
+                    id="sun-chk"
+                    class="form-check-input"
+                    formControlName="sun"
+                  />
+                  <label for="sun-chk" class="form-check-label">Sunday</label>
+                </div>
               </div>
             </div>
+            <label for="business-days" class="business-days"
+              >Select Business Days</label
+            >
           </div>
-          <label for="business-days" class="business-days"
-            >Select Business Days</label
-          >
-        </div>
 
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">
-          Sign-in
-        </button>
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4">
+            Sign-in
+          </button>
+        </div>
       </div>
     </form>
   </div>

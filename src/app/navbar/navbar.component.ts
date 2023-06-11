@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(public userObj: RegisterService, public router: Router) {}
 
   ngOnInit(): void {
-    this.userObj.getPatientLoginStatus().subscribe({
+    this.userObj.getLoginStatus().subscribe({
       next: (status) => {
         this.status = status;
       },
@@ -23,11 +23,11 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout() {
-    this.userObj.setPatientLoginStatus(false);
+    this.userObj.setLoginStatus(false);
     this.userObj.setCurrentPatient(null);
-    this.userObj.setDoctorLoginStatus(false);
+    // this.userObj.setDoctorLoginStatus(false);
     this.userObj.setCurrentDoctor(null);
-    this.userObj.setAdminLoginStatus(false);
+    // this.userObj.setAdminLoginStatus(false);
     this.router.navigate(['login']);
   }
 }

@@ -3,10 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../appointment.service';
 import { RegisterService } from '../register.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 interface Appointment {
   patfirstname: string;
   patlastname: string;
+  patphone: string;
+  patemail: string;
   docfirstname: string;
   doclastname: string;
   docemail: string;
@@ -23,6 +26,8 @@ interface Appointment {
 interface Result {
   patfirstname: string;
   patlastname: string;
+  patphone: string;
+  patemail: string;
   docfirstname: string;
   doclastname: string;
   docregd: number;
@@ -69,6 +74,7 @@ export class PatientListComponent implements OnInit {
     private hC: HttpClient,
     private registerServiceObj: RegisterService,
     private appointmentServiceObj: AppointmentService,
+    private location: Location,
     private router: Router
   ) {}
 
@@ -101,6 +107,10 @@ export class PatientListComponent implements OnInit {
 
   onClickCancelAppointment(result: any) {
     this.appointmentServiceObj.cancelAppointment(result);
-    this.router.navigateByUrl('/');
+    this.router
+      .navigateByUrl('/dashboard', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate([decodeURI(this.location.path())]);
+      });
   }
 }

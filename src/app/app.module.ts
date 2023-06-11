@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { BookAppointmentPageComponent } from './book-appointment-page/book-appointment-page.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PatientListComponent } from './patient-list/patient-list.component';
     DashboardComponent,
     DoctorListComponent,
     BookAppointmentPageComponent,
-    PatientListComponent
+    PatientListComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

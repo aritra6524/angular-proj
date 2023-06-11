@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class AppointmentService {
   private appointmentDetails: Appointment = null;
   private loginCredentials: Patient | Doctor = null;
 
-  constructor(private hC: HttpClient) {}
+  constructor(private hC: HttpClient, private router: Router) {}
 
   doctorDetailsBS = new BehaviorSubject(this.doctorDetails);
   loginCredentialsBS = new BehaviorSubject(this.loginCredentials);
@@ -39,6 +40,14 @@ export class AppointmentService {
         (data) => {},
         (error) => {}
       );
+  }
+
+  deleteDoctor(doctor) {
+    //Delete Doctor
+    this.hC.delete(`http://localhost:3000/doctor/${doctor.id}`).subscribe(
+      (data) => {},
+      (error) => {}
+    );
   }
 }
 

@@ -27,8 +27,8 @@ export class LoginComponent {
       docpassword: new FormControl(null),
     });
     this.loginAdminForm = new FormGroup({
-      adminemail: new FormControl(null),
-      adminpassword: new FormControl(null),
+      username: new FormControl(null),
+      password: new FormControl(null),
     });
   }
 
@@ -43,7 +43,7 @@ export class LoginComponent {
         if (response.length != 0) {
           if (patientCredObj.patpassword == response[0].patpassword) {
             //update global state
-            this.serviceObj.setPatientLoginStatus(true);
+            this.serviceObj.setLoginStatus(true);
             this.serviceObj.setCurrentPatient(response[0]);
             //navigate to dashboard
             this.router.navigate([
@@ -70,7 +70,7 @@ export class LoginComponent {
         if (response.length != 0) {
           if (doctorCredObj.docpassword == response[0].docpassword) {
             //update global state
-            this.serviceObj.setDoctorLoginStatus(true);
+            this.serviceObj.setLoginStatus(true);
             this.serviceObj.setCurrentDoctor(response[0]);
             //navigate to dashboard
             this.router.navigate([
@@ -92,15 +92,14 @@ export class LoginComponent {
 
   onAdminLogin(): void {
     const adminCredObj = this.loginAdminForm.value;
-    // console.log(adminCredObj);
-    this.serviceObj.getuserCredAdmin(adminCredObj.adminemail).subscribe({
+    this.serviceObj.getuserCredAdmin(adminCredObj.username).subscribe({
       next: (response) => {
         if (response.length != 0) {
-          if (adminCredObj.adminpassword == response[0].adminpassword) {
+          if (adminCredObj.password == response[0].password) {
             //update global state
-            this.serviceObj.setAdminLoginStatus(true);
+            this.serviceObj.setLoginStatus(true);
             //navigate to dashboard
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/admin-dashboard']);
           } else {
             alert('Invalid Password');
           }
