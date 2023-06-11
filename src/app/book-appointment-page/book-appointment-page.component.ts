@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AppointmentService } from '../appointment.service';
 import { RegisterService } from '../register.service';
+import { Router } from '@angular/router';
 
 interface Doctor {
   docfirstname: string;
@@ -66,7 +67,8 @@ interface Appointment {
 export class BookAppointmentPageComponent implements OnInit {
   constructor(
     private serviceObj: AppointmentService,
-    private registerServiceObj: RegisterService
+    private registerServiceObj: RegisterService,
+    private router: Router
   ) {}
 
   selectedDoctor: Doctor = null;
@@ -130,5 +132,8 @@ export class BookAppointmentPageComponent implements OnInit {
         this.appointment.doclastname +
         ' Booked Successfully'
     );
+    this.router.navigate([
+      `/dashboard/doctor-list/${this.appointment.patemail}`,
+    ]);
   }
 }
