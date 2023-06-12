@@ -193,25 +193,6 @@
       "id": 3
     },
     {
-      "docfirstname": "Tanvir",
-      "doclastname": "Alam",
-      "docregd": 123456,
-      "docspecialization": "General Surgery",
-      "docqualification": "MS",
-      "docphone": 9876657890,
-      "docemail": "tanvir@gmail.com",
-      "clinicname": "Healthcare Clinic",
-      "cliniccity": "Kolkata",
-      "clinicaddress": "Netaji Nagar",
-      "doctime": "05:09",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "appointmentDate": "2023-06-28",
-      "id": 4
-    },
-    {
       "docfirstname": "H.K.",
       "doclastname": "Mitra",
       "docregd": 456783,
@@ -324,25 +305,6 @@
       "patphone": 9876546789,
       "appointmentDate": "2023-06-28",
       "id": 23
-    },
-    {
-      "docfirstname": "A.K.",
-      "doclastname": "Basu",
-      "docregd": 2334455,
-      "docspecialization": "Cardiology",
-      "docqualification": "MBBS, MD",
-      "docphone": 5679987654,
-      "docemail": "ak@gmail.com",
-      "clinicname": "AK's Clinic",
-      "cliniccity": "Kolkata",
-      "clinicaddress": "Jadavpur",
-      "doctime": "18:00",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "appointmentDate": "2023-06-27",
-      "id": 24
     },
     {
       "docfirstname": "S.B.",
