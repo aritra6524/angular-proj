@@ -22,6 +22,10 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  toHome() {
+    this.router.navigate(['/']);
+  }
+
   onLogout() {
     this.userObj.setLoginStatus(false);
     this.userObj.setCurrentPatient(null);

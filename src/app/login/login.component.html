@@ -1,5 +1,5 @@
 <html class="vh-100">
-  <div class="card p-3 col-md-8 col-lg-6 mt-5 mx-auto">
+  <div class="card p-3 col-md-8 col-lg-6 m-auto">
     <h1 class="mb-4">Login</h1>
 
     <div class="d-flex mb-4" *ngIf="profileType != 'Admin'">
@@ -131,12 +131,14 @@
     </form>
     <a
       class="text-muted"
+      type="button"
       (click)="setProfile('Admin')"
       *ngIf="profileType != 'Admin'"
       >Login as Admin?</a
     >
     <a
       class="text-muted"
+      type="button"
       (click)="setProfile('Patient')"
       *ngIf="profileType == 'Admin'"
       >Login as Doctor/Patient?</a
