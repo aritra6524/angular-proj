@@ -49,6 +49,14 @@ export class AppointmentService {
       (error) => {}
     );
   }
+
+  deletePatient(patient) {
+    //Delete Patient
+    this.hC.delete(`http://localhost:3000/patient/${patient.id}`).subscribe(
+      (data) => {},
+      (error) => {}
+    );
+  }
 }
 
 export interface Doctor {

@@ -42,19 +42,29 @@
   <h2>List of Doctors</h2>
   <div class="row">
     <div class="col-sm-3 my-3" *ngFor="let doctor of doctors">
-      <div class="card">
-        <div class="card-body">
+      <div class="card mx-auto" style="background-color: rgb(245, 245, 245)">
+        <div class="card-body" style="justify-content: center">
+          <img
+            class="mx-auto"
+            src="https://www.nicepng.com/png/detail/867-8678512_doctor-icon-physician.png"
+            width="100px"
+          />
           <h5 class="card-title">
             Dr. {{ doctor.docfirstname }} {{ doctor.doclastname }}
           </h5>
           <p class="card-text">
-            {{ doctor.docspecialization }}
+            {{ doctor.docspecialization }}<br />
+            {{ doctor.docqualification }}<br />
+            {{ doctor.cliniccity }}<br />
           </p>
-          <p class="card-text">
-            {{ doctor.docqualification }}
-          </p>
-          <p class="card-text">
-            {{ doctor.cliniccity }}
+          <p class="card-text mx-auto">
+            <a *ngIf="doctor.mon == true">Mon </a>
+            <a *ngIf="doctor.tues == true">Tues </a>
+            <a *ngIf="doctor.wed == true">Wed </a>
+            <a *ngIf="doctor.thurs == true">Thurs </a>
+            <a *ngIf="doctor.fri == true">Fri </a>
+            <a *ngIf="doctor.sat == true">Sat </a>
+            <a *ngIf="doctor.sun == true">Sun </a>
           </p>
           <a class="btn btn-success" (click)="toAppointmentPage(doctor)"
             >Book Appointment</a

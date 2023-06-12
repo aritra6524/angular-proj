@@ -18,9 +18,11 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   doctors: Doctor[] = [];
+  patients: Patient[] = [];
 
   ngOnInit() {
     this.fetchDoctors();
+    this.fetchPatients();
   }
 
   fetchDoctors() {
@@ -30,6 +32,17 @@ export class AdminDashboardComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching doctors:', error);
+      }
+    );
+  }
+
+  fetchPatients() {
+    this.hC.get<Patient[]>('http://localhost:3000/patient').subscribe(
+      (data) => {
+        this.patients = data;
+      },
+      (error) => {
+        console.error('Error fetching patients:', error);
       }
     );
   }
@@ -45,7 +58,22 @@ export class AdminDashboardComponent implements OnInit {
         ' - ' +
         'Profile Deleted!'
     );
+    //Refresh the component
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([decodeURI(this.location.path())]);
+    });
+  }
 
+  onClickDeletePatient(patient) {
+    this.appointmentServiceObj.deletePatient(patient);
+
+    alert(
+        patient.patfirstname +
+        ' ' +
+        patient.patlastname +
+        ' - ' +
+        'Profile Deleted!'
+    );
     //Refresh the component
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([decodeURI(this.location.path())]);
@@ -72,4 +100,11 @@ interface Doctor {
   fri: boolean;
   sat: boolean;
   sun: boolean;
+}
+
+interface Patient {
+  patfirstname: string;
+  patlastname: string;
+  patemail: string;
+  patphone: number;
 }
