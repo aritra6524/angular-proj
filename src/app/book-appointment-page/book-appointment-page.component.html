@@ -1,63 +1,98 @@
-<div class="appointment-page d-flex">
-  <div class="card col-sm-6 mx-auto">
-    <div class="card-body">
-      <div class="d-flex">
-        <p class="text-muted">Doctor's Name:</p>
-        <p class="card-text">
-          Dr. {{ selectedDoctor.docfirstname }}
-          {{ selectedDoctor.doclastname }}
-        </p>
+<html class="back vh-100 pt-3">
+  <form
+    [formGroup]="appointmentForm"
+    (ngSubmit)="bookAppointment()"
+    class="mx-auto p-5 m-0"
+    style="background-color: rgba(230, 255, 202, 0.712);"
+  >
+    <div class="appointment-page d-flex justify-content-around">
+      <!-- Doctor Details -->
+
+      <div class="doctor-details col-sm-3">
+        <div class="card mx-auto" style="width: max-content">
+          <div class="card-body">
+            <p>
+              Doctor: &nbsp;
+              <b
+                >{{ selectedDoctor.docfirstname }}
+                {{ selectedDoctor.doclastname }}
+              </b>
+            </p>
+            <br />
+
+            <p>
+              Specialization: &nbsp;
+              <b>{{ selectedDoctor.docspecialization }}</b>
+            </p>
+            <br />
+
+            <p>
+              Qualification: &nbsp; <b>{{ selectedDoctor.docqualification }}</b>
+            </p>
+            <br />
+
+            <p>
+              Email ID: &nbsp; <b>{{ selectedDoctor.docemail }}</b>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="d-flex">
-        <p class="text-muted">Specialization:</p>
-        <p class="card-text">
-          {{ selectedDoctor.docspecialization }}
-        </p>
+
+      <!-- Appointment Details -->
+      <div class="appointment-details col-sm-3">
+        <div class="card mx-auto" style="width: max-content">
+          <div class="card-body">
+            <p>Available Days:</p>
+            <div class="d-flex">
+              <b *ngIf="selectedDoctor.mon == true">Mon &nbsp;</b>
+              <b *ngIf="selectedDoctor.tues == true">Tues &nbsp;</b>
+              <b *ngIf="selectedDoctor.wed == true">Wed &nbsp;</b>
+              <b *ngIf="selectedDoctor.thurs == true">Thurs &nbsp;</b>
+              <b *ngIf="selectedDoctor.fri == true">Fri &nbsp;</b>
+              <b *ngIf="selectedDoctor.sat == true">Sat &nbsp;</b>
+              <b *ngIf="selectedDoctor.sun == true">Sun &nbsp;</b>
+            </div>
+            <br />
+
+            <p>Time:</p>
+            <h3 class="card-text">{{ selectedDoctor.doctime }} hrs.</h3>
+            <br />
+
+            <p>
+              Date: &nbsp;
+              <input type="date" formControlName="date" class="m-auto" />
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="d-flex">
-        <p class="text-muted">Email ID:</p>
-        <p class="card-text">{{ selectedDoctor.docemail }}</p>
-      </div>
-      <div class="d-flex">
-        <p class="text-muted">Clinic's Name:</p>
-        <p class="card-text">
-          {{ selectedDoctor.clinicname }}
-        </p>
-      </div>
-      <div class="d-flex">
-        <p class="text-muted">Clinic Address:</p>
-        <p class="card-text">
-          {{ selectedDoctor.clinicaddress }}
-        </p>
-      </div>
-      <div class="d-flex">
-        <p class="text-muted">Clinic City:</p>
-        <p class="card-text">{{ selectedDoctor.cliniccity }}</p>
-      </div>
-      <div class="d-flex">
-        <p class="text-muted">Available Days:</p>
-        <p *ngIf="selectedDoctor.mon == true">Monday</p>
-        <p *ngIf="selectedDoctor.tues == true">Tuesday</p>
-        <p *ngIf="selectedDoctor.wed == true">Wednesday</p>
-        <p *ngIf="selectedDoctor.thurs == true">Thursday</p>
-        <p *ngIf="selectedDoctor.fri == true">Friday</p>
-        <p *ngIf="selectedDoctor.sat == true">Saturday</p>
-        <p *ngIf="selectedDoctor.sun == true">Sunday</p>
-      </div>
-      <br />
-      <div class="">
-        <p class="text-muted">Appointment Time:</p>
-        <h3 class="card-text">{{ selectedDoctor.doctime }} hrs.</h3>
+
+      <!-- Clinic Details -->
+
+      <div class="clinic-details col-sm-3">
+        <div class="card mx-auto" style="width: max-content">
+          <div class="card-body">
+            <p>
+              Clinic: &nbsp; <b>{{ selectedDoctor.clinicname }}</b>
+            </p>
+            <br />
+
+            <p>
+              Address: &nbsp; <b>{{ selectedDoctor.clinicaddress }}</b>
+            </p>
+            <br />
+
+            <p>
+              Address: &nbsp; <b>{{ selectedDoctor.cliniccity }}</b>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="card col-sm-5 p-5 m-auto" style="background-color: bisque">
-    <form [formGroup]="appointmentForm" (ngSubmit)="bookAppointment()">
-      <b>Appointment Time:</b><br /><br />
-      <input type="date" formControlName="date" class="m-auto" /><br /><br />
-      <button type="submit" class="btn btn-success m-auto">
+
+    <div class="col-md-12 text-center mt-5">
+      <button type="submit" class="btn btn-success p-2">
         Book Appointment
       </button>
-    </form>
-  </div>
-</div>
+    </div>
+  </form>
+</html>

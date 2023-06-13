@@ -1,4 +1,17 @@
 .hero-section{
-    /* background: url('https://media.istockphoto.com/id/1159847028/photo/medical-stethoscope-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=pWg7zs2AZmeSvdjnWRxlx5Y0wwgnGMpJlOQi065D6mM=') no-repeat center;
-    background-size: cover; */
+    background: url('/assets/doctors.jpg') no-repeat bottom;
+    background-size: cover;
 }
+
+.rotate {
+    animation: rotation 10s infinite linear;
+  }
+  
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
