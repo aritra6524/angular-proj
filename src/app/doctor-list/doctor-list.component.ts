@@ -40,6 +40,7 @@ interface Appointment {
   patphone: number;
   patemail: string;
   appointmentDate: string;
+  queue: number;
 }
 
 interface Result {
@@ -57,6 +58,7 @@ interface Result {
   patphone: number;
   patemail: string;
   appointmentDate: string;
+  queue: number;
 }
 
 interface Patient {
@@ -130,6 +132,21 @@ export class DoctorListComponent implements OnInit {
         console.error('Error fetching doctors:', error);
       }
     );
+
+    // console.log(this.apptfilters);
+    //   let count = 1;
+    //   for (let apptfilter of this.apptfilters) {
+    //     apptfilter.queue = count;
+    //     count = count + 1;
+    //   }
+
+    //   for (var i=0; i<.jsonData.length; i++) {
+    //     for (var key in json.jsonData[i]) {
+    //         for (var j= 0; j<json.jsonData[i][key].length; j++) {
+    //             console.log(json.jsonData[i][key][j])
+    //         }
+    //     }
+    //  }
   }
 
   onClickCancelAppointment(result: any) {

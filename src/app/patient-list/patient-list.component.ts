@@ -21,6 +21,7 @@ interface Appointment {
   clinicaddress: string;
   doctime: string;
   appointmentDate: string;
+  queue: number;
 }
 
 interface Result {
@@ -38,6 +39,7 @@ interface Result {
   clinicaddress: string;
   doctime: string;
   appointmentDate: string;
+  queue: number;
 }
 
 interface Doctor {

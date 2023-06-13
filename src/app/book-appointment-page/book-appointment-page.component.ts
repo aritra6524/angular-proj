@@ -57,6 +57,7 @@ interface Appointment {
   patemail: string;
   patphone: number;
   appointmentDate: string;
+  queue: number;
 }
 
 @Component({

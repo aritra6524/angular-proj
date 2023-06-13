@@ -114,4 +114,5 @@ export interface Appointment {
   patphone: number;
   patemail: string;
   patpassword: string;
+  queue: number;
 }
