@@ -78,6 +78,10 @@ export class BookAppointmentPageComponent implements OnInit {
   appointmentForm: FormGroup;
 
   ngOnInit(): void {
+    this.appointmentForm = new FormGroup({
+      appointmentDate: new FormControl(null)
+    })
+
     this.getDate();
 
     this.appointmentForm = new FormGroup({
@@ -103,6 +107,10 @@ export class BookAppointmentPageComponent implements OnInit {
   }
 
   minDate:any = "";
+
+  get appointmentDate(){
+    return this.appointmentForm.get("associateName");
+  }
 
   getDate() {
     var date = new Date();

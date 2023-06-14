@@ -475,6 +475,25 @@
       "patphone": 9876546789,
       "appointmentDate": "2023-06-28",
       "id": 40
+    },
+    {
+      "docfirstname": "Rajiv",
+      "doclastname": "Bhattacharya",
+      "docregd": 234568,
+      "docspecialization": "Dermatology",
+      "docqualification": "MBBS",
+      "docphone": 6785678498,
+      "docemail": "rajiv@gmail.com",
+      "clinicname": "Rajiv's Clinic",
+      "cliniccity": "Mumbai",
+      "clinicaddress": "Shivaji Nagar",
+      "doctime": "19:00",
+      "patfirstname": "Aritra",
+      "patlastname": "Basu",
+      "patemail": "aritra.basu123@gmail.com",
+      "patphone": 9876546789,
+      "appointmentDate": null,
+      "id": 41
     }
   ],
   "admin": [

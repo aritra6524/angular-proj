@@ -61,12 +61,12 @@
               <h3 class="card-text">{{ selectedDoctor.doctime }} hrs.</h3>
               <br />
 
-              <p>
+              <div>
                 Date: &nbsp;
-                <input type="date" formControlName="date" min="{{minDate}}" class="m-auto" />
-                <!-- <div *ngIf="date['touched'] || date['dirty']">
-                Invalid</div> -->
-              </p>
+                <input type="date" formControlName="appointmentDate" min="{{minDate}}" class="m-auto" />
+                <div *ngIf="appointmentDate['touched'] || appointmentDate['dirty']">
+                Invalid</div>
+                </div>
             </div>
           </div>
         </div>
