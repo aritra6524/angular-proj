@@ -5,7 +5,7 @@
       (ngSubmit)="ref.valid && bookAppointment()"
       class="mx-auto p-5 m-0"
       #ref="ngForm"
-      style="border: 1px solid rgba(0, 128, 0, 0.205);"
+      style="border: 1px solid rgba(0, 128, 0, 0.205)"
     >
       <div class="appointment-page d-flex justify-content-around">
         <!-- Doctor Details -->
@@ -41,36 +41,6 @@
           </div>
         </div>
 
-        <!-- Appointment Details -->
-        <div class="appointment-details col-sm-3">
-          <div class="card mx-auto" style="width: max-content">
-            <div class="card-body">
-              <p>Available Days:</p>
-              <div class="d-flex">
-                <b *ngIf="selectedDoctor.mon == true">Mon &nbsp;</b>
-                <b *ngIf="selectedDoctor.tues == true">Tues &nbsp;</b>
-                <b *ngIf="selectedDoctor.wed == true">Wed &nbsp;</b>
-                <b *ngIf="selectedDoctor.thurs == true">Thurs &nbsp;</b>
-                <b *ngIf="selectedDoctor.fri == true">Fri &nbsp;</b>
-                <b *ngIf="selectedDoctor.sat == true">Sat &nbsp;</b>
-                <b *ngIf="selectedDoctor.sun == true">Sun &nbsp;</b>
-              </div>
-              <br />
-
-              <p>Time:</p>
-              <h3 class="card-text">{{ selectedDoctor.doctime }} hrs.</h3>
-              <br />
-
-              <div>
-                Date: &nbsp;
-                <input type="date" formControlName="appointmentDate" min="{{minDate}}" class="m-auto" />
-                <div *ngIf="appointmentDate['touched'] || appointmentDate['dirty']">
-                Invalid</div>
-                </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Clinic Details -->
 
         <div class="clinic-details col-sm-3">
@@ -94,13 +64,66 @@
         </div>
       </div>
 
+      <!-- Appointment Details -->
+      <div class="appointment-details col-sm-3">
+        <div class="card mx-auto" style="width: max-content">
+          <div class="card-body">
+            <p>Available Days:</p>
+            <div class="d-flex">
+              <b *ngIf="selectedDoctor.mon == true">Mon &nbsp;</b>
+              <b *ngIf="selectedDoctor.tues == true">Tues &nbsp;</b>
+              <b *ngIf="selectedDoctor.wed == true">Wed &nbsp;</b>
+              <b *ngIf="selectedDoctor.thurs == true">Thurs &nbsp;</b>
+              <b *ngIf="selectedDoctor.fri == true">Fri &nbsp;</b>
+              <b *ngIf="selectedDoctor.sat == true">Sat &nbsp;</b>
+              <b *ngIf="selectedDoctor.sun == true">Sun &nbsp;</b>
+            </div>
+            <br />
+
+            <p>Time:</p>
+            <h3 class="card-text">{{ selectedDoctor.doctime }} hrs.</h3>
+            <br />
+
+            <div>
+              Date: &nbsp;
+              <input
+                type="date"
+                formControlName="appointmentDate"
+                min="{{ minDate }}"
+                class="m-auto"
+              />
+              <div *ngIf="flag == true">Invalid</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Clinic Details -->
+
+      <div class="clinic-details col-sm-3">
+        <div class="card mx-auto" style="width: max-content">
+          <div class="card-body">
+            <p>
+              Clinic: &nbsp; <b>{{ selectedDoctor.clinicname }}</b>
+            </p>
+            <br />
+
+            <p>
+              Address: &nbsp; <b>{{ selectedDoctor.clinicaddress }}</b>
+            </p>
+            <br />
+
+            <p>
+              Address: &nbsp; <b>{{ selectedDoctor.cliniccity }}</b>
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="col-md-12 text-center mt-5">
         <button type="submit" class="btn btn-success p-2">
           Book Appointment
         </button>
-        
       </div>
-
     </form>
   </div>
 </html>
