@@ -78,6 +78,8 @@ export class BookAppointmentPageComponent implements OnInit {
   appointmentForm: FormGroup;
 
   ngOnInit(): void {
+    this.getDate();
+
     this.appointmentForm = new FormGroup({
       date: new FormControl(null),
     });
@@ -99,6 +101,28 @@ export class BookAppointmentPageComponent implements OnInit {
       },
     });
   }
+
+  minDate:any = "";
+
+  getDate() {
+    var date = new Date();
+    var toDate:any = date.getDate();
+    if(toDate < 10) {
+      toDate = "0" + toDate;
+    }
+    var month:any = date.getMonth()+1;
+    if(month < 10){
+      month = "0" + month;
+    }
+    var year:any = date.getFullYear();
+    this.minDate = year + "-" + month + "-" + toDate;
+  }
+
+  // checkInvalidDate() {
+  //   if(this.minDate.getDay() === 0 || this.minDate.getDay() === 6){
+  //     console.log("valid");
+  //   }
+  // }
 
   bookAppointment() {
     this.appointment = Object.assign({

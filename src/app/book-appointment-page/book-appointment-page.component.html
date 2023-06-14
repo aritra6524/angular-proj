@@ -2,8 +2,9 @@
   <div class="vh-100 px-4 py-5 text-secondary">
     <form
       [formGroup]="appointmentForm"
-      (ngSubmit)="bookAppointment()"
+      (ngSubmit)="ref.valid && bookAppointment()"
       class="mx-auto p-5 m-0"
+      #ref="ngForm"
       style="border: 1px solid rgba(0, 128, 0, 0.205);"
     >
       <div class="appointment-page d-flex justify-content-around">
@@ -62,7 +63,9 @@
 
               <p>
                 Date: &nbsp;
-                <input type="date" formControlName="date" class="m-auto" />
+                <input type="date" formControlName="date" min="{{minDate}}" class="m-auto" />
+                <!-- <div *ngIf="date['touched'] || date['dirty']">
+                Invalid</div> -->
               </p>
             </div>
           </div>
@@ -95,7 +98,9 @@
         <button type="submit" class="btn btn-success p-2">
           Book Appointment
         </button>
+        
       </div>
+
     </form>
   </div>
 </html>
