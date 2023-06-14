@@ -21,7 +21,16 @@
       </button> -->
 
       <!-- Brand -->
-      <a class="navbar-brand" type="button" (click)="toHome()">
+      <a class="navbar-brand" type="button" (click)="toHome()" *ngIf="!status">
+        <img
+          src="/assets/logo-no-background.png"
+          height="30"
+          class="ms-1"
+          alt="DoctorPortal"
+        />
+      </a>
+
+      <a class="navbar-brand" *ngIf="status">
         <img
           src="/assets/logo-no-background.png"
           height="30"
