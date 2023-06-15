@@ -458,25 +458,6 @@
       "id": 39
     },
     {
-      "docfirstname": "S.B.",
-      "doclastname": "Dutta",
-      "docregd": 465796,
-      "docspecialization": "Diabetology",
-      "docqualification": "MBBS, MD",
-      "docphone": 9876657890,
-      "docemail": "sb@gmail.com",
-      "clinicname": "SB's Clinic",
-      "cliniccity": "Bangalore",
-      "clinicaddress": "Whitefield",
-      "doctime": "19:00",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "appointmentDate": "2023-06-28",
-      "id": 40
-    },
-    {
       "docfirstname": "Rajiv",
       "doclastname": "Bhattacharya",
       "docregd": 234568,
@@ -530,42 +511,6 @@
       "patemail": "aritra.basu123@gmail.com",
       "patphone": 9876546789,
       "id": 43
-    },
-    {
-      "docfirstname": "S.B.",
-      "doclastname": "Dutta",
-      "docregd": 465796,
-      "docspecialization": "Diabetology",
-      "docqualification": "MBBS, MD",
-      "docphone": 9876657890,
-      "docemail": "sb@gmail.com",
-      "clinicname": "SB's Clinic",
-      "cliniccity": "Bangalore",
-      "clinicaddress": "Whitefield",
-      "doctime": "19:00",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "id": 44
-    },
-    {
-      "docfirstname": "A.K.",
-      "doclastname": "Basu",
-      "docregd": 2334455,
-      "docspecialization": "Cardiology",
-      "docqualification": "MBBS, MD",
-      "docphone": 5679987654,
-      "docemail": "ak@gmail.com",
-      "clinicname": "AK's Clinic",
-      "cliniccity": "Kolkata",
-      "clinicaddress": "Jadavpur",
-      "doctime": "18:00",
-      "patfirstname": "Aritra",
-      "patlastname": "Basu",
-      "patemail": "aritra.basu123@gmail.com",
-      "patphone": 9876546789,
-      "id": 45
     }
   ],
   "admin": [
