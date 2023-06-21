@@ -160,7 +160,7 @@ export class BookAppointmentPageComponent implements OnInit {
     });
 
     console.log(this.appointmentDate);
-    this.checkInvalidDate(this.appointmentDate);
+    //this.checkInvalidDate(this.appointmentDate);
 
     alert(
       'Appointment with Dr. ' +
