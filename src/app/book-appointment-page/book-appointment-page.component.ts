@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AppointmentService } from '../appointment.service';
 import { RegisterService } from '../register.service';
+import { Router } from '@angular/router';
 
 interface Doctor {
   docfirstname: string;
@@ -67,18 +67,22 @@ interface Appointment {
 export class BookAppointmentPageComponent implements OnInit {
   constructor(
     private serviceObj: AppointmentService,
-    private registerServiceObj: RegisterService
+    private registerServiceObj: RegisterService,
+    private router: Router
   ) {}
 
   selectedDoctor: Doctor = null;
   selectedPatient: Patient = null;
   appointment: Appointment = null;
   appointmentForm: FormGroup;
+  appointmentDate: FormControl = null;
 
   ngOnInit(): void {
     this.appointmentForm = new FormGroup({
-      date: new FormControl(null),
+      appointmentDate: new FormControl(),
     });
+
+    this.getDate();
 
     this.serviceObj.getDoctorDetails().subscribe({
       next: (data) => {
@@ -98,6 +102,22 @@ export class BookAppointmentPageComponent implements OnInit {
     });
   }
 
+  minDate: any = '';
+
+  getDate() {
+    var date = new Date();
+    var toDate: any = date.getDate();
+    if (toDate < 10) {
+      toDate = '0' + toDate;
+    }
+    var month: any = date.getMonth() + 1;
+    if (month < 10) {
+      month = '0' + month;
+    }
+    var year: any = date.getFullYear();
+    this.minDate = year + '-' + month + '-' + toDate;
+  }
+
   bookAppointment() {
     this.appointment = Object.assign({
       docfirstname: this.selectedDoctor.docfirstname,
@@ -115,7 +135,7 @@ export class BookAppointmentPageComponent implements OnInit {
       patlastname: this.selectedPatient.patlastname,
       patemail: this.selectedPatient.patemail,
       patphone: this.selectedPatient.patphone,
-      appointmentDate: this.appointmentForm.value.date,
+      appointmentDate: this.appointmentForm.value.appointmentDate,
     });
 
     this.serviceObj.setAppointment(this.appointment).subscribe({
@@ -124,5 +144,16 @@ export class BookAppointmentPageComponent implements OnInit {
         console.error('Error booking appointment :', error);
       },
     });
+
+    alert(
+      'Appointment with Dr. ' +
+        this.appointment.docfirstname +
+        ' ' +
+        this.appointment.doclastname +
+        ' Booked Successfully'
+    );
+    this.router.navigate([
+      `/dashboard/doctor-list/${this.appointment.patemail}`,
+    ]);
   }
 }

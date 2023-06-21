@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -10,15 +11,12 @@ export class AppointmentService {
   private appointmentDetails: Appointment = null;
   private loginCredentials: Patient | Doctor = null;
 
-  constructor(private hC: HttpClient) {}
+  constructor(private hC: HttpClient, private router: Router) {}
 
   doctorDetailsBS = new BehaviorSubject(this.doctorDetails);
   loginCredentialsBS = new BehaviorSubject(this.loginCredentials);
-  // appointmentDetailsBS = new BehaviorSubject(this.appointmentDetails);
 
   setDoctorDetails(doctor) {
-    // console.log("Setting Doctor: ");
-    // console.log(doctor);
     this.doctorDetails = doctor;
     return this.doctorDetailsBS.next(doctor);
   }
@@ -27,12 +25,37 @@ export class AppointmentService {
     return this.doctorDetailsBS.asObservable();
   }
 
-  setAppointment(appointment){
+  setAppointment(appointment) {
     return this.hC.post('http://localhost:3000/appointment', appointment);
   }
 
   addAppointmentDate(date) {
     return this.hC.post('http://localhost:3000/appointment', date);
+  }
+
+  cancelAppointment(appointment: any) {
+    return this.hC
+      .delete(`http://localhost:3000/appointment/${appointment.id}`)
+      .subscribe(
+        (data) => {},
+        (error) => {}
+      );
+  }
+
+  deleteDoctor(doctor) {
+    //Delete Doctor
+    this.hC.delete(`http://localhost:3000/doctor/${doctor.id}`).subscribe(
+      (data) => {},
+      (error) => {}
+    );
+  }
+
+  deletePatient(patient) {
+    //Delete Patient
+    this.hC.delete(`http://localhost:3000/patient/${patient.id}`).subscribe(
+      (data) => {},
+      (error) => {}
+    );
   }
 }
 
@@ -91,4 +114,6 @@ export interface Appointment {
   patphone: number;
   patemail: string;
   patpassword: string;
+  queue: number;
+  appointmentDate: string;
 }

@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
       patphone: new FormControl(null),
       patemail: new FormControl(null),
       patpassword: new FormControl(null),
+      patcity: new FormControl(null),
     });
     this.registerDocForm = new FormGroup({
       docfirstname: new FormControl(null),
