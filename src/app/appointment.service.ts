@@ -6,9 +6,10 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AppointmentService {
   private doctorDetails: Doctor = null;
-  private appointmentDetails: Appointment = null;
+  // private appointmentDetails: Appointment = null;
   private loginCredentials: Patient | Doctor = null;
 
   constructor(private hC: HttpClient, private router: Router) {}
