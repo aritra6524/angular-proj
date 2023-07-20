@@ -197,6 +197,15 @@
       "patpassword": "prateeti",
       "patcity": null,
       "id": 25
+    },
+    {
+      "patfirstname": "Sagnik",
+      "patlastname": "Chakraborty",
+      "patphone": 9983747843,
+      "patemail": "sagnik@gmail.com",
+      "patpassword": "sagnik",
+      "patcity": null,
+      "id": 26
     }
   ],
   "appointment": [
